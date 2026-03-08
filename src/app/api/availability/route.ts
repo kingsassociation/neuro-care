@@ -58,7 +58,7 @@ export async function GET(req: Request) {
             select: { timeSlot: true }
         });
 
-        const bookedSlots = new Set(existingAppointments.map(a => a.timeSlot));
+        const bookedSlots = new Set(existingAppointments.map((a: { timeSlot: string }) => a.timeSlot));
 
         // 3. Generate slots based on schedule
         const availableSlots: string[] = [];

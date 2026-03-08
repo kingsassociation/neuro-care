@@ -75,25 +75,25 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Sidebar Container */}
       <aside className={`
-        fixed inset-y-0 left-0 z-50 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-50 bg-white border-r border-slate-200 shadow-xl flex flex-col transition-all duration-300 ease-in-out
         ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
-        ${isCollapsed ? "md:w-20" : "md:w-64"}
+        ${isCollapsed ? "md:w-20" : "md:w-72"}
         w-72
       `}>
         {/* Sidebar Header */}
-        <div className="p-6 border-b border-slate-100 flex items-center justify-between overflow-hidden h-20">
-          <div className={`flex items-center gap-3 transition-opacity duration-300 ${isCollapsed ? "opacity-0 invisible" : "opacity-100 visible"}`}>
-            <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-600/20">
+        <div className={`p-6 border-b border-slate-100 flex items-center h-20 transition-all duration-300 ${isCollapsed ? "justify-center px-2" : "justify-between"}`}>
+          <div className={`flex items-center gap-3 transition-all duration-300 ${isCollapsed ? "w-0 opacity-0 overflow-hidden" : "w-auto opacity-100"}`}>
+            <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-600/20 shrink-0">
               <Stethoscope size={22} />
             </div>
             <h2 className="text-lg font-black text-slate-900 tracking-tight whitespace-nowrap">
               NeuroCare <span className="text-blue-600">Admin</span>
             </h2>
           </div>
-          <div className={`hidden md:flex transition-all duration-300 ${isCollapsed ? "w-full justify-center" : ""}`}>
+          <div className={`hidden md:flex transition-all duration-300 ${isCollapsed ? "" : ""}`}>
              <button 
                 onClick={() => setIsCollapsed(!isCollapsed)}
-                className="p-2 text-slate-400 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition-all border border-transparent hover:border-blue-100"
+                className="p-2 text-slate-400 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition-all border border-transparent hover:border-blue-100 shrink-0"
               >
                 {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
               </button>
@@ -160,7 +160,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Main Content Area */}
       <main className={`
         flex-1 flex flex-col transition-all duration-300 ease-in-out
-        ${isCollapsed ? "md:ml-20" : "md:ml-64"}
+        ${isCollapsed ? "md:ml-20" : "md:ml-72"}
         min-h-screen overflow-auto bg-slate-50 pt-16 md:pt-0
       `}>
         <div className="p-6 md:p-10 lg:p-12 max-w-[1600px] w-full mx-auto">
