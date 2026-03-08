@@ -1,0 +1,172 @@
+"use client";
+
+import {
+  CalendarDays,
+  ChevronLeft,
+  ChevronRight,
+  FileText,
+  Hospital,
+  LayoutDashboard,
+  LogOut,
+  Menu,
+  Settings,
+  Stethoscope,
+  Users,
+  X
+} from "lucide-react";
+import Link from "next/link";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
+
+  // Close sidebar on route change (mobile)
+  useEffect(() => {
+    setIsSidebarOpen(false);
+  }, [pathname]);
+
+  const navItems = [
+    { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
+    { href: "/dashboard/prescriptions", label: "Prescriptions", icon: FileText },
+    { href: "/dashboard/appointments", label: "Appointments", icon: CalendarDays },
+    { href: "/dashboard/patients", label: "Patients", icon: Users },
+    { href: "/dashboard/schedule", label: "Schedule Settings", icon: Settings },
+    { href: "/dashboard/chambers", label: "Chambers", icon: Hospital },
+  ];
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth/logout");
+      router.push("/login");
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
+  };
+
+  return (
+    <div className="flex h-screen bg-slate-50 text-slate-900 overflow-hidden relative">
+      {/* Mobile Top Bar */}
+      <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b border-slate-200 z-40 px-4 flex items-center justify-between shadow-sm">
+        <div className="flex items-center gap-2">
+          <div className="bg-blue-600 p-1.5 rounded-lg text-white">
+            <Stethoscope size={20} />
+          </div>
+          <span className="font-bold text-slate-900">NeuroCare</span>
+        </div>
+        <button 
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)} 
+          className="p-2 text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"
+        >
+          {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Sidebar Overlay (Mobile) */}
+      {isSidebarOpen && (
+        <div 
+          className="md:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 transition-opacity"
+          onClick={() => setIsSidebarOpen(false)}
+        />
+      )}
+
+      {/* Sidebar Container */}
+      <aside className={`
+        fixed inset-y-0 left-0 z-50 bg-white border-r border-slate-200 flex flex-col transition-all duration-300 ease-in-out
+        ${isSidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}
+        ${isCollapsed ? "md:w-20" : "md:w-64"}
+        w-72
+      `}>
+        {/* Sidebar Header */}
+        <div className="p-6 border-b border-slate-100 flex items-center justify-between overflow-hidden h-20">
+          <div className={`flex items-center gap-3 transition-opacity duration-300 ${isCollapsed ? "opacity-0 invisible" : "opacity-100 visible"}`}>
+            <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-600/20">
+              <Stethoscope size={22} />
+            </div>
+            <h2 className="text-lg font-black text-slate-900 tracking-tight whitespace-nowrap">
+              NeuroCare <span className="text-blue-600">Admin</span>
+            </h2>
+          </div>
+          <div className={`hidden md:flex transition-all duration-300 ${isCollapsed ? "w-full justify-center" : ""}`}>
+             <button 
+                onClick={() => setIsCollapsed(!isCollapsed)}
+                className="p-2 text-slate-400 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition-all border border-transparent hover:border-blue-100"
+              >
+                {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+              </button>
+          </div>
+        </div>
+        
+        {/* Navigation */}
+        <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto">
+          {navItems.map((item) => {
+            const isActive = pathname === item.href;
+            return (
+              <Link 
+                key={item.href}
+                href={item.href} 
+                className={`
+                  flex items-center gap-3 px-3 py-3 rounded-2xl transition-all group relative
+                  ${isActive 
+                    ? "bg-slate-900 text-white shadow-lg shadow-slate-900/10" 
+                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
+                  }
+                `}
+                title={isCollapsed ? item.label : ""}
+              >
+                <div className={`${isCollapsed ? "w-full flex justify-center" : ""}`}>
+                  <item.icon size={20} className={`${isActive ? "text-white" : "group-hover:text-blue-600 transition-colors"}`} />
+                </div>
+                {!isCollapsed && <span className="font-bold text-[13px] uppercase tracking-wider">{item.label}</span>}
+                
+                {/* Tooltip for collapsed mode */}
+                {isCollapsed && (
+                  <div className="absolute left-14 bg-slate-900 text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 pointer-events-none transition-all whitespace-nowrap z-[60] ml-2 shadow-xl border border-slate-800">
+                    {item.label}
+                  </div>
+                )}
+              </Link>
+            );
+          })}
+        </nav>
+
+        {/* Sidebar Footer */}
+        <div className="p-4 border-t border-slate-100">
+           <button 
+            onClick={handleLogout}
+            className={`
+              w-full flex items-center gap-3 px-3 py-3 rounded-2xl text-slate-400 hover:bg-red-50 hover:text-red-600 transition-all group relative
+            `}
+            title={isCollapsed ? "Logout" : ""}
+          >
+            <div className={`${isCollapsed ? "w-full flex justify-center" : ""}`}>
+              <LogOut size={20} className="group-hover:text-red-600 transition-colors" />
+            </div>
+            {!isCollapsed && <span className="font-bold text-[13px] uppercase tracking-wider">Logout</span>}
+            
+            {/* Tooltip for collapsed mode */}
+            {isCollapsed && (
+              <div className="absolute left-14 bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 pointer-events-none transition-all whitespace-nowrap z-[60] ml-2 shadow-xl">
+                Logout
+              </div>
+            )}
+          </button>
+        </div>
+      </aside>
+
+      {/* Main Content Area */}
+      <main className={`
+        flex-1 flex flex-col transition-all duration-300 ease-in-out
+        ${isCollapsed ? "md:ml-20" : "md:ml-64"}
+        min-h-screen overflow-auto bg-slate-50 pt-16 md:pt-0
+      `}>
+        <div className="p-6 md:p-10 lg:p-12 max-w-[1600px] w-full mx-auto">
+          {children}
+        </div>
+      </main>
+    </div>
+  );
+}

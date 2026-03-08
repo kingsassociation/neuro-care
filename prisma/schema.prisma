@@ -1,0 +1,139 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Doctor {
+  id             String   @id @default(uuid())
+  name           String
+  degree         String
+  specialization String
+  experience     Int
+  bio            String
+  photo          String
+  createdAt      DateTime @default(now())
+}
+
+model Service {
+  id          String   @id @default(uuid())
+  title       String
+  description String
+  icon        String?
+  createdAt   DateTime @default(now())
+}
+
+model Blog {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String
+  coverImage  String?
+  published   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+}
+
+model Testimonial {
+  id        String   @id @default(uuid())
+  name      String
+  content   String
+  rating    Int
+  videoUrl  String?
+  createdAt DateTime @default(now())
+}
+
+model Appointment {
+  id           String        @id @default(uuid())
+  patientId    String
+  patient      Patient       @relation(fields: [patientId], references: [id])
+  
+  chamberId    String?
+  chamber      Chamber?      @relation(fields: [chamberId], references: [id])
+
+  date         DateTime
+  timeSlot     String
+  status       String        @default("pending") // pending, confirmed, completed, cancelled
+  
+  prescription Prescription?
+
+  createdAt    DateTime      @default(now())
+
+  @@index([date])
+  @@index([status])
+  @@index([patientId])
+  @@index([chamberId])
+}
+
+model Patient {
+  id            String         @id @default(uuid())
+  name          String
+  phone         String         @unique
+  age           Int?
+  gender        String?
+  bloodGroup    String?
+  address       String?
+  historyNotes  String?
+
+  appointments  Appointment[]
+  prescriptions Prescription[]
+  createdAt     DateTime       @default(now())
+
+  @@index([phone])
+}
+
+model Prescription {
+  id            String       @id @default(uuid())
+  appointmentId String?      @unique
+  appointment   Appointment? @relation(fields: [appointmentId], references: [id])
+  
+  patientId     String
+  patient       Patient      @relation(fields: [patientId], references: [id])
+
+  symptoms      String?
+  diagnosis     String?
+  medications   Json
+  tests         String?
+  advice        String?
+  nextVisit     DateTime?
+
+  chamberId     String?
+  chamber       Chamber?     @relation(fields: [chamberId], references: [id])
+
+  createdAt     DateTime     @default(now())
+
+  @@index([patientId])
+  @@index([appointmentId])
+  @@index([chamberId])
+}
+
+model Chamber {
+  id        String   @id @default(uuid())
+  name      String
+  type      String   @default("Primary") // e.gPrimary, Visiting
+  address   String
+  phone     String
+  
+  schedules Schedule[]
+  appointments Appointment[]
+  prescriptions Prescription[]
+}
+
+model Schedule {
+  id           String  @id @default(uuid())
+  chamberId    String
+  chamber      Chamber @relation(fields: [chamberId], references: [id], onDelete: Cascade)
+  
+  dayOfWeek    Int     // 0=Sunday, 1=Monday, etc.
+  startTime    String  // e.g., "10:00"
+  endTime      String  // e.g., "14:00"
+  slotDuration Int     // e.g., 20
+  isAvailable  Boolean @default(true)
+}
+
+model Admin {
+  id       String  @id @default(uuid())
+  email    String  @unique
+  password String
+}

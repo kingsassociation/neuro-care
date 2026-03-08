@@ -1,8 +1,107 @@
 "use client";
 
-import { Calendar, Clock, MapPin, Phone } from "lucide-react";
+import { Calendar, Clock, Loader2, MapPin, Phone } from "lucide-react";
+import { useEffect, useState } from "react";
 
-const Booking = () => {
+export default function Booking() {
+  const [chambers, setChambers] = useState<any[]>([]);
+  const [selectedChamberId, setSelectedChamberId] = useState("");
+  const [date, setDate] = useState("");
+  const [slots, setSlots] = useState<string[]>([]);
+  const [selectedSlot, setSelectedSlot] = useState("");
+  
+  const [formData, setFormData] = useState({
+    name: "",
+    phone: "",
+    issue: ""
+  });
+  
+  const [loading, setLoading] = useState(false);
+  const [slotsLoading, setSlotsLoading] = useState(false);
+  const [message, setMessage] = useState("");
+
+  const formatTo12Hr = (time24: string) => {
+    const [hours, minutes] = time24.split(':').map(Number);
+    const period = hours >= 12 ? 'PM' : 'AM';
+    const hours12 = hours % 12 || 12;
+    return `${hours12}:${minutes.toString().padStart(2, '0')} ${period}`;
+  };
+
+  useEffect(() => {
+    fetch('/api/chambers')
+      .then(res => res.json())
+      .then(data => {
+        setChambers(data);
+        if (data.length > 0) setSelectedChamberId(data[0].id);
+      })
+      .catch(err => console.error(err));
+  }, []);
+
+  useEffect(() => {
+    if (selectedChamberId && date) {
+      setSlotsLoading(true);
+      fetch(`/api/availability?chamberId=${selectedChamberId}&date=${date}`)
+        .then(res => res.json())
+        .then(data => {
+          setSlots(data.slots || []);
+          setSelectedSlot(""); // reset selected slot
+        })
+        .catch(err => console.error(err))
+        .finally(() => setSlotsLoading(false));
+    } else {
+      setSlots([]);
+    }
+  }, [selectedChamberId, date]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!selectedChamberId || !date || !selectedSlot || !formData.name || !formData.phone) {
+      setMessage("Please fill all required fields.");
+      return;
+    }
+
+    setLoading(true);
+    setMessage("");
+
+    try {
+      // 1. Upsert Patient
+      const patientRes = await fetch('/api/patients', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          phone: formData.phone,
+          historyNotes: formData.issue
+        })
+      });
+      const patient = await patientRes.json();
+      if (!patientRes.ok) throw new Error(patient.error);
+
+      // 2. Create Appointment
+      const apptRes = await fetch('/api/appointments', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          patientId: patient.id,
+          chamberId: selectedChamberId,
+          date: date,
+          timeSlot: selectedSlot
+        })
+      });
+      
+      if (!apptRes.ok) throw new Error("Failed to book appointment");
+      
+      setMessage("Booking Confirmed!");
+      setDate("");
+      setFormData({ name: "", phone: "", issue: "" });
+      setSelectedSlot("");
+    } catch (error: any) {
+      setMessage("Error: " + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <section id="appointments" className="relative pt-4 pb-10 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
@@ -24,66 +123,52 @@ const Booking = () => {
               </div>
 
               <div className="space-y-6">
-                {/* Primary Chamber */}
-                <div className="glass-light bg-white/50 border border-white/60 p-6 rounded-3xl relative overflow-hidden group shadow-sm">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl group-hover:bg-primary/40 transition-all duration-700"></div>
-                  <div className="flex gap-4 relative z-10">
-                    <div className="bg-primary text-white p-3 rounded-2xl h-fit shadow-lg">
+                {chambers.map((chamber, i) => (
+                  <div key={chamber.id} className="glass-light bg-white/50 border border-white/60 p-6 rounded-3xl relative overflow-hidden group shadow-sm flex gap-4">
+                    <div className={`absolute top-0 right-0 w-32 h-32 ${i % 2 === 0 ? 'bg-primary/20' : 'bg-secondary/20'} rounded-full blur-3xl transition-all duration-700`}></div>
+                    <div className={`${i % 2 === 0 ? 'bg-primary' : 'bg-secondary'} text-white p-3 rounded-2xl h-fit shadow-lg relative z-10`}>
                       <MapPin size={24} />
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-2 relative z-10">
                       <div className="flex items-center gap-3">
-                        <h4 className="font-bold text-xl text-slate-800">Sevron Hospital</h4>
-                        <span className="bg-primary/20 text-primary border border-primary/30 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Primary</span>
+                        <h4 className="font-bold text-xl text-slate-800">{chamber.name}</h4>
+                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${i % 2 === 0 ? 'bg-primary/20 text-primary border border-primary/30' : 'bg-secondary/20 text-secondary border border-secondary/30'}`}>
+                          {chamber.type}
+                        </span>
                       </div>
-                      <p className="text-slate-600 text-sm">Panchlaish Residential Area, Chattogram</p>
-                      <div className="flex items-center gap-2 text-slate-500 text-sm font-medium pt-2 border-t border-slate-200">
-                        <Clock size={14}/> Sat - Thu (4:00 PM - 9:00 PM)
-                      </div>
+                      <p className="text-slate-600 text-sm">{chamber.address}</p>
                       <div className="flex items-center gap-2 text-slate-500 text-sm font-medium">
-                        <Phone size={14}/> +880 1812-345678 (Chamber specific)
+                        <Phone size={14}/> {chamber.phone}
                       </div>
                     </div>
                   </div>
-                </div>
-
-                {/* Visiting Chamber */}
-                <div className="glass-light bg-white/50 border border-white/60 p-6 rounded-3xl relative overflow-hidden group shadow-sm">
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-secondary/20 rounded-full blur-3xl group-hover:bg-secondary/40 transition-all duration-700"></div>
-                  <div className="flex gap-4 relative z-10">
-                    <div className="bg-secondary text-white p-3 rounded-2xl h-fit shadow-lg">
-                      <MapPin size={24} />
-                    </div>
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-3">
-                        <h4 className="font-bold text-xl text-slate-800">Epic Health Care</h4>
-                        <span className="bg-secondary/20 text-secondary border border-secondary/30 px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider">Visiting</span>
-                      </div>
-                      <p className="text-slate-600 text-sm">O.R. Nizam Road, Chattogram</p>
-                      <div className="flex items-center gap-2 text-slate-500 text-sm font-medium pt-2 border-t border-slate-200">
-                        <Clock size={14}/> Fridays Only (10:00 AM - 1:00 PM)
-                      </div>
-                      <div className="flex items-center gap-2 text-slate-500 text-sm font-medium">
-                        <Phone size={14}/> +880 1812-987654 (Chamber specific)
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
 
             {/* Right Side - Form/Action */}
             <div className="w-full lg:w-1/2">
-              <div className="glass p-8 rounded-[2.5rem] bg-white text-slate-900 shadow-2xl space-y-6 border border-white/50">
+              <form onSubmit={handleSubmit} className="glass p-8 rounded-[2.5rem] bg-white text-slate-900 shadow-2xl space-y-6 border border-white/50">
                 <h4 className="text-2xl font-bold tracking-tight">Request Serial Form</h4>
                 
+                {message && (
+                  <div className={`p-3 rounded-lg text-sm font-bold border ${message.includes('Error') ? 'bg-red-50 text-red-600 border-red-200' : 'bg-green-50 text-green-700 border-green-200'}`}>
+                    {message}
+                  </div>
+                )}
+
                 <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Select Chamber</label>
                   <div className="relative">
                     <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
-                    <select className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none transition-all font-medium text-slate-700">
-                      <option>Sevron Hospital (Primary)</option>
-                      <option>Epic Health Care (Visiting - Fridays)</option>
+                    <select 
+                      required
+                      value={selectedChamberId}
+                      onChange={(e) => setSelectedChamberId(e.target.value)}
+                      className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none transition-all font-medium text-slate-700"
+                    >
+                      <option value="" disabled>Select Chamber</option>
+                      {chambers.map(c => <option key={c.id} value={c.id}>{c.name} ({c.type})</option>)}
                     </select>
                   </div>
                 </div>
@@ -93,42 +178,68 @@ const Booking = () => {
                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Target Date</label>
                     <div className="relative">
                       <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
-                      <input type="date" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" />
+                      <input 
+                        required
+                        type="date" 
+                        min={new Date().toISOString().split('T')[0]}
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" 
+                      />
                     </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Time Slot</label>
+                    <div className="relative">
+                      <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
+                      <select 
+                        required
+                        value={selectedSlot}
+                        onChange={(e) => setSelectedSlot(e.target.value)}
+                        disabled={!date || slots.length === 0 || slotsLoading}
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none transition-all font-medium text-slate-700 disabled:opacity-50"
+                      >
+                         <option value="" disabled>
+                           {slotsLoading ? "Loading Slots..." : (slots.length === 0 ? (date ? "No Slots" : "Select Date First") : "Choose Slot")}
+                         </option>
+                         {slots.map(s => <option key={s} value={s}>{formatTo12Hr(s)}</option>)}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Patient Name</label>
+                    <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="Full Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Phone</label>
                     <div className="relative">
                       <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
-                      <input type="tel" placeholder="01XXX-XXXXXX" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" />
+                      <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="01XXX-XXXXXX" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" />
                     </div>
                   </div>
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Patient Name</label>
-                  <input type="text" placeholder="Full Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" />
-                </div>
-
-                <div className="space-y-2">
                   <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Medical Issue (Short)</label>
-                  <textarea placeholder="e.g. Brain tumor consultation, severe headache..." rows={2} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium text-slate-700"></textarea>
+                  <textarea value={formData.issue} onChange={e => setFormData({...formData, issue: e.target.value})} placeholder="e.g. Brain tumor consultation, severe headache..." rows={2} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium text-slate-700"></textarea>
                 </div>
 
-                <button className="w-full bg-primary text-white py-5 rounded-2xl font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all text-lg tracking-wide">
+                <button disabled={loading} type="submit" className="w-full flex justify-center items-center gap-2 bg-primary text-white py-5 rounded-2xl font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all text-lg tracking-wide disabled:opacity-75 disabled:scale-100">
+                  {loading && <Loader2 className="animate-spin" size={20} />}
                   Confirm Booking Now
                 </button>
 
                 <p className="text-center text-xs text-slate-500 font-medium">
                   The chamber assistant will call your phone to verify the serial timing.
                 </p>
-              </div>
+              </form>
             </div>
           </div>
         </div>
       </div>
     </section>
   );
-};
-
-export default Booking;
+}
