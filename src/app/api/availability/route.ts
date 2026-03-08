@@ -63,7 +63,7 @@ export async function GET(req: Request) {
         // 3. Generate slots based on schedule
         const availableSlots: string[] = [];
 
-        schedules.forEach(schedule => {
+        schedules.forEach((schedule: { startTime: string; endTime: string; slotDuration: number }) => {
             const [startHour, startMin] = schedule.startTime.split(':').map(Number);
             const [endHour, endMin] = schedule.endTime.split(':').map(Number);
 
