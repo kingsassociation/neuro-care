@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 
 const prescriptionSchema = z.object({
-    id: z.string().optional(),
+    id: z.string().optional().nullable(),
     patientId: z.string().min(1, "patientId is required"),
     appointmentId: z.string().optional().nullable(),
     chamberId: z.string().optional().nullable(),

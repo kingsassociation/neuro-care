@@ -97,6 +97,7 @@ export async function POST(req: Request) {
                 patient: {
                     select: { id: true, name: true }
                 },
+                chamber: true
             }
         });
 

@@ -144,14 +144,13 @@ export default function PrescriptionForm() {
       const patient = await patientRes.json();
 
       // 2. Create/Update Prescription linked to Patient
-      const url = formData.id ? `/api/prescriptions/${formData.id}` : '/api/prescriptions';
       const prescRes = await fetch('/api/prescriptions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          id: searchParams.get("prescriptionId"),
+          id: searchParams.get("prescriptionId") || undefined,
           patientId: patient.id,
-          appointmentId: searchParams.get("appointmentId"),
+          appointmentId: searchParams.get("appointmentId") || undefined,
           symptoms: data.symptoms,
           diagnosis: data.diagnosis,
           medications: data.medications,
