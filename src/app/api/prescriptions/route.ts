@@ -70,7 +70,7 @@ export async function POST(req: Request) {
             })
         } else {
             // Use a transaction to ensure both prescription creation and appointment update succeed
-            prescription = await prisma.$transaction(async (tx) => {
+            prescription = await prisma.$transaction(async (tx: any) => {
                 const p = await tx.prescription.create({
                     data: presData
                 });

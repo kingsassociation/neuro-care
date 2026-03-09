@@ -1,18 +1,18 @@
 "use client";
 
 import {
-  CalendarDays,
-  ChevronLeft,
-  ChevronRight,
-  FileText,
-  Hospital,
-  LayoutDashboard,
-  LogOut,
-  Menu,
-  Settings,
-  Stethoscope,
-  Users,
-  X
+    CalendarDays,
+    ChevronLeft,
+    ChevronRight,
+    FileText,
+    Hospital,
+    LayoutDashboard,
+    LogOut,
+    Menu,
+    Settings,
+    Stethoscope,
+    Users,
+    X
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -34,8 +34,9 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { href: "/dashboard/prescriptions", label: "Prescriptions", icon: FileText },
     { href: "/dashboard/appointments", label: "Appointments", icon: CalendarDays },
     { href: "/dashboard/patients", label: "Patients", icon: Users },
-    { href: "/dashboard/schedule", label: "Schedule Settings", icon: Settings },
+    { href: "/dashboard/schedule", label: "Schedule Configuration", icon: CalendarDays },
     { href: "/dashboard/chambers", label: "Chambers", icon: Hospital },
+    { href: "/dashboard/settings", label: "Account Settings", icon: Settings },
   ];
 
   const handleLogout = async () => {
