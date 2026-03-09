@@ -5,6 +5,7 @@ import {
     ChevronLeft,
     ChevronRight,
     FileText,
+    Globe2,
     Hospital,
     LayoutDashboard,
     LogOut,
@@ -132,6 +133,28 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </Link>
             );
           })}
+          
+          <div className="pt-4 mt-4 border-t border-slate-100">
+            <Link 
+              href="/" 
+              className={`
+                flex items-center gap-3 px-3 py-3 rounded-2xl transition-all group relative
+                text-slate-500 hover:bg-blue-50 hover:text-blue-600
+              `}
+              title={isCollapsed ? "Visit Main Site" : ""}
+            >
+              <div className={`${isCollapsed ? "w-full flex justify-center" : ""}`}>
+                <Globe2 size={20} className="group-hover:text-blue-600 transition-colors" />
+              </div>
+              {!isCollapsed && <span className="font-bold text-[13px] uppercase tracking-wider">Visit Main Site</span>}
+              
+              {isCollapsed && (
+                <div className="absolute left-14 bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 pointer-events-none transition-all whitespace-nowrap z-[60] ml-2 shadow-xl border border-blue-500">
+                  Visit Main Site
+                </div>
+              )}
+            </Link>
+          </div>
         </nav>
 
         {/* Sidebar Footer */}

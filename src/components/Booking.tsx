@@ -114,42 +114,42 @@ export default function Booking() {
   };
 
   return (
-    <section id="appointments" className="relative pt-4 pb-10 px-4 overflow-hidden">
+    <section id="appointments" className="relative pt-2 md:pt-4 pb-6 md:pb-10 px-4 overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="glass overflow-hidden rounded-2xl border border-white/20 bg-gradient-to-br from-primary/5 to-secondary/5 p-8 lg:p-16 relative shadow-2xl">
+        <div className="glass overflow-hidden rounded-[2rem] md:rounded-2xl border border-white/20 bg-gradient-to-br from-primary/5 to-secondary/5 p-6 md:p-12 lg:p-16 relative shadow-2xl">
           {/* Background Decorative Circles */}
           <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[50%] bg-primary/20 rounded-full blur-[100px]"></div>
           <div className="absolute bottom-[-20%] left-[-10%] w-[50%] h-[50%] bg-secondary/10 rounded-full blur-[100px]"></div>
 
-          <div className="flex flex-col lg:flex-row gap-16 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16 relative z-10">
             {/* Left Side - Info */}
-            <div className="w-full lg:w-1/2 space-y-6">
-              <div className="space-y-4">
-                <h3 className="text-3xl lg:text-5xl font-bold tracking-tight text-slate-900">
+            <div className="w-full lg:w-1/2 space-y-5 md:space-y-6">
+              <div className="space-y-2 md:space-y-4">
+                <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-slate-900 leading-[1.2]">
                   Book Your Chamber <span className="text-primary italic">Consultation</span>
                 </h3>
-                <p className="text-slate-600 text-lg lg:text-xl">
+                <p className="text-slate-600 text-base md:text-lg lg:text-xl leading-relaxed">
                   Get explicit priority booking at our Chattogram chambers. Fill out the details to lock your spot before arrival.
                 </p>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 md:space-y-6">
                 {chambers.map((chamber, i) => (
-                  <div key={chamber.id} className="glass-light bg-white/50 border border-white/60 p-6 rounded-3xl relative overflow-hidden group shadow-sm flex gap-4">
+                  <div key={chamber.id} className="glass-light bg-white/50 border border-white/60 p-4 md:p-6 rounded-[1.8rem] md:rounded-3xl relative overflow-hidden group shadow-sm flex gap-3 md:gap-4">
                     <div className={`absolute top-0 right-0 w-32 h-32 ${i % 2 === 0 ? 'bg-primary/20' : 'bg-secondary/20'} rounded-full blur-3xl transition-all duration-700`}></div>
-                    <div className={`${i % 2 === 0 ? 'bg-primary' : 'bg-secondary'} text-white p-3 rounded-2xl h-fit shadow-lg relative z-10`}>
-                      <MapPin size={24} />
+                    <div className={`${i % 2 === 0 ? 'bg-primary' : 'bg-secondary'} text-white p-2.5 md:p-3 rounded-xl md:rounded-2xl h-fit shadow-lg relative z-10`}>
+                      <MapPin size={20} className="md:w-6 md:h-6" />
                     </div>
-                    <div className="space-y-2 relative z-10">
-                      <div className="flex items-center gap-3">
-                        <h4 className="font-bold text-xl text-slate-800">{chamber.name}</h4>
-                        <span className={`px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider ${i % 2 === 0 ? 'bg-primary/20 text-primary border border-primary/30' : 'bg-secondary/20 text-secondary border border-secondary/30'}`}>
+                    <div className="space-y-1.5 md:space-y-2 relative z-10">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h4 className="font-bold text-lg md:text-xl text-slate-800">{chamber.name}</h4>
+                        <span className={`px-2 py-0.5 rounded text-[8px] md:text-[10px] font-bold uppercase tracking-wider ${i % 2 === 0 ? 'bg-primary/20 text-primary border border-primary/30' : 'bg-secondary/20 text-secondary border border-secondary/30'}`}>
                           {chamber.type}
                         </span>
                       </div>
-                      <p className="text-slate-600 text-sm">{chamber.address}</p>
-                      <div className="flex items-center gap-2 text-slate-500 text-sm font-medium">
-                        <Phone size={14}/> {chamber.phone}
+                      <p className="text-slate-600 text-[12px] md:text-sm">{chamber.address}</p>
+                      <div className="flex items-center gap-2 text-slate-500 text-[12px] md:text-sm font-medium">
+                        <Phone size={12}/> {chamber.phone}
                       </div>
                     </div>
                   </div>
@@ -158,67 +158,67 @@ export default function Booking() {
             </div>
 
             {/* Right Side - Form/Action */}
-            <div className="w-full lg:w-1/2">
+            <div className="w-full lg:w-1/2 pt-4 lg:pt-0">
               {bookingSuccessData ? (
-                <div className="glass p-8 rounded-[2.5rem] bg-white text-slate-900 shadow-2xl border border-emerald-100 animate-in fade-in zoom-in duration-500">
-                  <div className="flex flex-col items-center text-center space-y-6">
-                    <div className="w-20 h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shadow-inner">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                <div className="glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white text-slate-900 shadow-2xl border border-emerald-100 animate-in fade-in zoom-in duration-500">
+                  <div className="flex flex-col items-center text-center space-y-4 md:space-y-6">
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shadow-inner">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" className="md:w-10 md:h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     </div>
                     
-                    <div className="space-y-2">
-                      <h4 className="text-3xl font-black text-slate-900 tracking-tight">Booking Confirmed!</h4>
-                      <p className="text-slate-500 font-medium">Your request has been successfully recorded.</p>
+                    <div className="space-y-1 md:space-y-2">
+                      <h4 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">Booking Confirmed!</h4>
+                      <p className="text-[13px] md:text-sm text-slate-500 font-medium">Your request has been successfully recorded.</p>
                     </div>
 
-                    <div className="w-full space-y-4 pt-4">
-                      <div className="p-5 bg-slate-50 rounded-3xl border border-slate-100 flex flex-col gap-3 text-left">
+                    <div className="w-full space-y-3 md:space-y-4 pt-2 md:pt-4">
+                      <div className="p-4 md:p-5 bg-slate-50 rounded-[1.8rem] md:rounded-3xl border border-slate-100 flex flex-col gap-2 md:gap-3 text-left">
                         <div className="flex items-center justify-between border-b border-slate-200 pb-2">
-                          <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">Reference ID</span>
-                          <span className="text-sm font-black text-primary px-2 py-1 bg-primary/5 rounded-lg border border-primary/10">#{bookingSuccessData.id.split('-')[0].toUpperCase()}</span>
+                          <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Reference ID</span>
+                          <span className="text-[12px] font-black text-primary px-2 py-0.5 md:py-1 bg-primary/5 rounded-lg border border-primary/10">#{bookingSuccessData.id.split('-')[0].toUpperCase()}</span>
                         </div>
                         
-                        <div className="grid grid-cols-2 gap-4">
-                          <div className="space-y-1">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Patient</span>
-                            <p className="text-sm font-bold text-slate-800">{bookingSuccessData.patient.name}</p>
+                        <div className="grid grid-cols-2 gap-3 md:gap-4">
+                          <div className="space-y-0.5">
+                            <span className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">Patient</span>
+                            <p className="text-[13px] md:text-sm font-bold text-slate-800">{bookingSuccessData.patient.name}</p>
                           </div>
-                          <div className="space-y-1">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Timing</span>
-                            <p className="text-sm font-bold text-slate-800">{formatTo12Hr(bookingSuccessData.timeSlot)}</p>
+                          <div className="space-y-0.5">
+                            <span className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">Timing</span>
+                            <p className="text-[13px] md:text-sm font-bold text-slate-800">{formatTo12Hr(bookingSuccessData.timeSlot)}</p>
                           </div>
-                          <div className="space-y-1">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Date</span>
-                            <p className="text-sm font-bold text-slate-800">{formatDate(bookingSuccessData.date)}</p>
+                          <div className="space-y-0.5">
+                            <span className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">Date</span>
+                            <p className="text-[13px] md:text-sm font-bold text-slate-800">{formatDate(bookingSuccessData.date)}</p>
                           </div>
-                          <div className="space-y-1">
-                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Chamber</span>
-                            <p className="text-sm font-bold text-slate-800 underline decoration-primary/30">{bookingSuccessData.chamber.name}</p>
+                          <div className="space-y-0.5">
+                            <span className="text-[9px] md:text-[10px] font-bold text-slate-400 uppercase tracking-widest">Chamber</span>
+                            <p className="text-[13px] md:text-sm font-bold text-slate-800 underline decoration-primary/30">{bookingSuccessData.chamber.name}</p>
                           </div>
                         </div>
 
-                        <div className="pt-2 flex items-start gap-2 text-xs text-slate-500 italic">
-                          <MapPin size={14} className="mt-0.5 text-primary" />
+                        <div className="pt-1.5 flex items-start gap-2 text-[11px] md:text-xs text-slate-500 italic">
+                          <MapPin size={12} className="mt-0.5 text-primary" />
                           <span>{bookingSuccessData.chamber.address}</span>
                         </div>
                       </div>
 
-                      <div className="p-4 bg-primary/5 rounded-2xl border border-primary/10 text-xs text-primary font-bold text-center leading-relaxed">
-                        The chamber assistant will call you at <span className="underline">{formData.phone || 'your phone'}</span> to verify the serial timing.
+                      <div className="p-3 md:p-4 bg-primary/5 rounded-xl md:rounded-2xl border border-primary/10 text-[11px] md:text-xs text-primary font-bold text-center leading-relaxed">
+                        The assistant will call at <span className="underline">{formData.phone}</span> for verification.
                       </div>
                     </div>
 
                     <button 
                       onClick={() => setBookingSuccessData(null)}
-                      className="w-full bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10"
+                      className="w-full bg-slate-900 text-white py-3.5 md:py-4 rounded-xl md:rounded-2xl font-bold hover:bg-slate-800 transition-all shadow-xl shadow-slate-900/10"
                     >
                       New Booking
                     </button>
                   </div>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="glass p-8 rounded-[2.5rem] bg-white text-slate-900 shadow-2xl space-y-6 border border-white/50 animate-in fade-in duration-500">
-                  <h4 className="text-2xl font-bold tracking-tight">Request Serial Form</h4>
+                <form onSubmit={handleSubmit} className="glass p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white text-slate-900 shadow-2xl space-y-4 md:space-y-6 border border-white/50 animate-in fade-in duration-500">
+                  <h4 className="text-xl md:text-2xl font-bold tracking-tight">Request Serial Form</h4>
                   
                   {message && (
                     <div className={`p-3 rounded-lg text-sm font-bold border ${message.includes('Error') ? 'bg-red-50 text-red-600 border-red-200' : 'bg-green-50 text-green-700 border-green-200'}`}>
@@ -226,15 +226,15 @@ export default function Booking() {
                     </div>
                   )}
 
-                  <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Select Chamber</label>
+                  <div className="space-y-2 md:space-y-3">
+                    <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Select Chamber</label>
                     <div className="relative">
-                      <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
+                      <MapPin className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={18} />
                       <select 
                         required
                         value={selectedChamberId}
                         onChange={(e) => setSelectedChamberId(e.target.value)}
-                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none transition-all font-medium text-slate-700"
+                        className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 pl-11 md:pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none transition-all font-medium text-slate-700 text-sm md:text-base"
                       >
                         <option value="" disabled>Select Chamber</option>
                         {chambers.map(c => <option key={c.id} value={c.id}>{c.name} ({c.type})</option>)}
@@ -242,31 +242,31 @@ export default function Booking() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Target Date</label>
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Target Date</label>
                       <div className="relative">
-                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
+                        <Calendar className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={18} />
                         <input 
                           required
                           type="date" 
                           min={new Date().toISOString().split('T')[0]}
                           value={date}
                           onChange={(e) => setDate(e.target.value)}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" 
+                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 pl-11 md:pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700 text-sm md:text-base" 
                         />
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Time Slot</label>
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Time Slot</label>
                       <div className="relative">
-                        <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
+                        <Clock className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={18} />
                         <select 
                           required
                           value={selectedSlot}
                           onChange={(e) => setSelectedSlot(e.target.value)}
                           disabled={!date || slots.length === 0 || slotsLoading}
-                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none transition-all font-medium text-slate-700 disabled:opacity-50"
+                          className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 pl-11 md:pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 appearance-none transition-all font-medium text-slate-700 disabled:opacity-50 text-sm md:text-base"
                         >
                            <option value="" disabled>
                              {slotsLoading ? "Loading Slots..." : (slots.length === 0 ? (date ? "No Slots" : "Select Date First") : "Choose Slot")}
@@ -277,26 +277,26 @@ export default function Booking() {
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Patient Name</label>
-                      <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="Full Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" />
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Patient Name</label>
+                      <input required type="text" value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="Full Name" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700 text-sm md:text-base" />
                     </div>
                     <div className="space-y-2">
-                      <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Phone</label>
+                      <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Phone</label>
                       <div className="relative">
-                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
-                        <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="01XXX-XXXXXX" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700" />
+                        <Phone className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={18} />
+                        <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="01XXX-XXXXXX" className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 pl-11 md:pl-12 pr-4 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all font-medium text-slate-700 text-sm md:text-base" />
                       </div>
                     </div>
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-xs font-bold uppercase tracking-widest text-slate-400">Medical Issue (Short)</label>
-                    <textarea value={formData.issue} onChange={e => setFormData({...formData, issue: e.target.value})} placeholder="e.g. Brain tumor consultation, severe headache..." rows={2} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-4 px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium text-slate-700"></textarea>
+                    <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Medical Issue (Short)</label>
+                    <textarea value={formData.issue} onChange={e => setFormData({...formData, issue: e.target.value})} placeholder="e.g. Brain tumor consultation..." rows={2} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium text-slate-700 text-sm md:text-base"></textarea>
                   </div>
 
-                  <button disabled={loading} type="submit" className="w-full flex justify-center items-center gap-2 bg-primary text-white py-5 rounded-2xl font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all text-lg tracking-wide disabled:opacity-75 disabled:scale-100">
+                  <button disabled={loading} type="submit" className="w-full flex justify-center items-center gap-2 bg-primary text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all text-base md:text-lg tracking-wide disabled:opacity-75 disabled:scale-100">
                     {loading && <Loader2 className="animate-spin" size={20} />}
                     Confirm Booking Now
                   </button>

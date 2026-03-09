@@ -265,17 +265,58 @@ export default function PrescriptionForm() {
             
             <div className="space-y-3">
               {fields.map((field, index) => (
-                <div key={field.id} className="flex gap-4 items-start bg-gray-50 p-4 rounded-lg border group">
-                  <div className="flex-1 space-y-3">
-                    <input {...register(`medications.${index}.name`)} className="w-full p-2 border rounded-md font-medium" placeholder="Drug Name (e.g. Tab. Paracetamol 500mg)" />
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-4">
-                      <input {...register(`medications.${index}.dosage`)} className="w-full p-2 border text-sm rounded-md" placeholder="Dosage (e.g. 1+0+1)" />
-                      <input {...register(`medications.${index}.frequency`)} className="w-full p-2 border text-sm rounded-md" placeholder="Freq (e.g. After Meal)" />
-                      <input {...register(`medications.${index}.duration`)} className="w-full p-2 border text-sm rounded-md" placeholder="Duration (e.g. 5 Days)" />
+                <div key={field.id} className="flex gap-4 items-start bg-slate-50 p-4 md:p-6 rounded-2xl border border-slate-200 group relative">
+                  <div className="flex-1 space-y-4">
+                    <div className="relative">
+                      <input {...register(`medications.${index}.name`)} className="w-full p-3 border rounded-xl font-bold text-slate-800 focus:ring-2 focus:ring-primary/20 outline-none transition-all" placeholder="Drug Name (e.g. Tab. Paracetamol 500mg)" />
+                    </div>
+                    
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="space-y-2">
+                        <input {...register(`medications.${index}.dosage`)} className="w-full p-3 border text-sm rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium" placeholder="Dosage (e.g. 1+0+1)" />
+                        <div className="flex flex-wrap gap-1">
+                          {['1+0+1', '1+1+1', '0+0+1', '1+0+0'].map(d => (
+                            <button key={d} type="button" onClick={() => {
+                              const values = getValues();
+                              const newMeds = [...values.medications];
+                              newMeds[index].dosage = d;
+                              reset({ ...values, medications: newMeds });
+                            }} className="text-[10px] bg-white border border-slate-200 px-2 py-1 rounded-lg hover:border-primary hover:text-primary transition-all font-bold text-slate-500 uppercase">{d}</button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <input {...register(`medications.${index}.frequency`)} className="w-full p-3 border text-sm rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium" placeholder="Freq (e.g. After Meal)" />
+                        <div className="flex flex-wrap gap-1">
+                          {['After Meal', 'Before Meal', 'Apply Locally', '2 Times Daily'].map(f => (
+                            <button key={f} type="button" onClick={() => {
+                              const values = getValues();
+                              const newMeds = [...values.medications];
+                              newMeds[index].frequency = f;
+                              reset({ ...values, medications: newMeds });
+                            }} className="text-[10px] bg-white border border-slate-200 px-2 py-1 rounded-lg hover:border-primary hover:text-primary transition-all font-bold text-slate-500 uppercase">{f}</button>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="space-y-2">
+                        <input {...register(`medications.${index}.duration`)} className="w-full p-3 border text-sm rounded-xl focus:ring-2 focus:ring-primary/20 outline-none transition-all font-medium" placeholder="Duration (e.g. 5 Days)" />
+                        <div className="flex flex-wrap gap-1">
+                          {['5 Days', '7 Days', '15 Days', '1 Month'].map(dur => (
+                             <button key={dur} type="button" onClick={() => {
+                              const values = getValues();
+                              const newMeds = [...values.medications];
+                              newMeds[index].duration = dur;
+                              reset({ ...values, medications: newMeds });
+                            }} className="text-[10px] bg-white border border-slate-200 px-2 py-1 rounded-lg hover:border-primary hover:text-primary transition-all font-bold text-slate-500 uppercase">{dur}</button>
+                          ))}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <button type="button" onClick={() => remove(index)} className="mt-2 text-red-500 hover:text-red-700 p-2 opacity-50 group-hover:opacity-100 transition">
-                    <Trash size={20} />
+                  <button type="button" onClick={() => remove(index)} className="mt-1 text-slate-300 hover:text-red-500 p-2 transition-colors">
+                    <Trash size={18} />
                   </button>
                 </div>
               ))}
@@ -332,31 +373,34 @@ export default function PrescriptionForm() {
 
       {/* Preview Modal */}
       {showPreview && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4 overflow-y-auto">
-          <div className="bg-gray-100 rounded-xl max-w-5xl w-full max-h-[90vh] overflow-y-auto flex flex-col shadow-2xl relative">
-            <div className="sticky top-0 bg-white border-b p-4 flex justify-between items-center z-10 shadow-sm">
-              <h3 className="font-bold text-lg">Prescription Preview</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 md:p-8 backdrop-blur-sm">
+          <div className="bg-white rounded-[2.5rem] w-full max-w-6xl max-h-[90vh] overflow-hidden flex flex-col shadow-2xl relative">
+            <div className="bg-white border-b px-8 py-6 flex justify-between items-center z-10 shadow-sm shrink-0">
+               <div>
+                 <h3 className="font-black text-xl text-slate-900 tracking-tight">Prescription Preview</h3>
+                 <p className="text-sm text-slate-500 font-medium">Review before printing or saving</p>
+               </div>
               <div className="flex gap-3">
                 <button 
                   onClick={() => {
                     handlePrint();
                     setShowPreview(false);
                   }} 
-                  className="bg-blue-600 text-white px-4 py-2 rounded font-medium flex gap-2 items-center hover:bg-blue-700"
+                  className="bg-primary text-white px-6 py-3 rounded-2xl font-bold flex gap-2 items-center hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all active:scale-95"
                 >
                   <Printer size={18} /> Print
                 </button>
                 <button 
                   onClick={() => setShowPreview(false)} 
-                  className="bg-gray-200 text-gray-800 px-4 py-2 rounded font-medium hover:bg-gray-300"
+                  className="bg-slate-100 text-slate-600 px-6 py-3 rounded-2xl font-bold hover:bg-slate-200 transition-all"
                 >
                   Close
                 </button>
               </div>
             </div>
             
-            <div className="p-8 flex justify-center bg-gray-200 min-h-max overflow-x-auto">
-               <div className="transform scale-[0.8] origin-top border shadow-2xl bg-white mb-10">
+            <div className="p-4 md:p-12 flex justify-center bg-slate-200/50 overflow-auto flex-1">
+               <div className="bg-white shadow-2xl origin-top mb-10 translate-y-0 scale-[0.5] sm:scale-[0.7] md:scale-[0.85] lg:scale-100 transition-transform duration-500">
                   <PrescriptionPrintView data={printData} ref={null} />
                </div>
             </div>

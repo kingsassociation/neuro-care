@@ -82,8 +82,8 @@ const Navbar = () => {
 
       {/* Mobile Menu Dropdown */}
       {isMobileMenuOpen && (
-        <div className="absolute top-[85px] left-4 right-4 glass rounded-2xl border border-white/20 shadow-2xl p-6 flex flex-col gap-6 md:hidden animate-in slide-in-from-top-4 fade-in duration-300">
-          <div className="flex flex-col gap-4 text-center">
+        <div className="absolute top-[75px] md:top-[85px] left-4 right-4 glass rounded-[1.5rem] md:rounded-2xl border border-white/20 shadow-2xl p-4 md:p-6 flex flex-col gap-5 md:hidden animate-in slide-in-from-top-4 fade-in duration-300">
+          <div className="flex flex-col gap-3 md:gap-4 text-center">
             {[
               { name: "Home", path: "/" },
               { name: "About", path: "/about" },
@@ -94,7 +94,7 @@ const Navbar = () => {
               <Link
                 key={item.name}
                 href={item.path}
-                className="text-foreground/80 font-medium hover:text-primary transition-colors text-lg"
+                className="text-foreground/80 font-medium hover:text-primary transition-colors text-base md:text-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {item.name}
@@ -102,7 +102,7 @@ const Navbar = () => {
             ))}
           </div>
           <Link href="/#appointments" onClick={() => setIsMobileMenuOpen(false)}>
-            <button className="w-full bg-primary text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-primary/40 active:scale-95 transition-all flex items-center justify-center gap-2">
+            <button className="w-full bg-primary text-white px-6 py-2.5 md:py-3 rounded-xl font-semibold shadow-lg hover:shadow-primary/40 active:scale-95 transition-all flex items-center justify-center gap-2 text-sm">
               <Calendar size={18} />
               <span>Book Appointment</span>
             </button>

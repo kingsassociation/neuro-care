@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { AlertCircle, BrainCircuit, Loader2, Lock, Mail } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { BrainCircuit, Lock, Mail, Loader2, AlertCircle } from "lucide-react";
+import { useState } from "react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -45,14 +45,14 @@ export default function LoginPage() {
         <div className="absolute bottom-[-10%] left-[-10%] w-[40%] h-[40%] bg-indigo-600 rounded-full blur-[120px]" />
       </div>
 
-      <div className="max-w-md w-full relative z-10">
-        <div className="bg-white p-8 md:p-10 rounded-[2rem] shadow-2xl shadow-slate-200 border border-slate-100 space-y-8">
-          <div className="text-center space-y-2">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-blue-600 rounded-2xl text-white shadow-lg shadow-blue-500/20 mb-4 transform -rotate-6">
-              <BrainCircuit size={32} />
+      <div className="max-w-md w-full relative z-10 px-4 md:px-0">
+        <div className="bg-white p-6 md:p-10 rounded-[2rem] shadow-2xl shadow-slate-200 border border-slate-100 space-y-6 md:space-y-8">
+          <div className="text-center space-y-1 md:space-y-2">
+            <div className="inline-flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-blue-600 rounded-2xl text-white shadow-lg shadow-blue-500/20 mb-3 md:mb-4 transform -rotate-6">
+              <BrainCircuit className="w-7 h-7 md:w-8 md:h-8" />
             </div>
-            <h1 className="text-3xl font-black text-slate-900 tracking-tight">NeuroCare Admin</h1>
-            <p className="text-slate-500 font-medium">Please enter your credentials to continue</p>
+            <h1 className="text-2xl md:text-3xl font-black text-slate-900 tracking-tight">NeuroCare Admin</h1>
+            <p className="text-slate-400 text-xs md:text-sm font-bold uppercase tracking-widest">Clinical Access Portal</p>
           </div>
 
           <form onSubmit={handleLogin} className="space-y-6">
