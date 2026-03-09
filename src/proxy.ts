@@ -5,13 +5,19 @@ export function proxy(request: NextRequest) {
     const session = request.cookies.get("auth_session");
     const { pathname } = request.nextUrl;
 
-    // 1. If user is trying to access login page while authenticated, redirect to dashboard
     if (pathname === "/login" && session) {
         return NextResponse.redirect(new URL("/dashboard", request.url));
     }
 
-    // 2. If user is trying to access protected routes without session, redirect to login
-    const isProtectedRoute = pathname.startsWith("/dashboard") || (pathname.startsWith("/api") && !pathname.startsWith("/api/auth") && !pathname.startsWith("/api/seed"));
+    const isPublicApi =
+        pathname === "/api/chambers" && request.method === "GET" ||
+        pathname === "/api/availability" && request.method === "GET" ||
+        pathname === "/api/patients" && request.method === "POST" ||
+        pathname === "/api/appointments" && request.method === "POST" ||
+        pathname.startsWith("/api/auth") ||
+        pathname.startsWith("/api/seed");
+
+    const isProtectedRoute = pathname.startsWith("/dashboard") || (pathname.startsWith("/api") && !isPublicApi);
 
     if (isProtectedRoute && !session) {
         return NextResponse.redirect(new URL("/login", request.url));
