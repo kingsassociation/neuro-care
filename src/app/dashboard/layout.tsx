@@ -8,12 +8,16 @@ import {
     Globe2,
     Hospital,
     LayoutDashboard,
-    LogOut,
-    Menu,
+    Activity,
     Settings,
-    Stethoscope,
-    Users,
-    X
+    Sparkles,
+    LogOut,
+    Plus,
+    Menu,
+    X,
+    User,
+    Clock,
+    Phone
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
@@ -34,7 +38,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     { href: "/dashboard", label: "Overview", icon: LayoutDashboard },
     { href: "/dashboard/prescriptions", label: "Prescriptions", icon: FileText },
     { href: "/dashboard/appointments", label: "Appointments", icon: CalendarDays },
-    { href: "/dashboard/patients", label: "Patients", icon: Users },
+    { href: "/dashboard/patients", label: "Patients", icon: User },
     { href: "/dashboard/schedule", label: "Schedule Configuration", icon: CalendarDays },
     { href: "/dashboard/chambers", label: "Chambers", icon: Hospital },
     { href: "/dashboard/settings", label: "Account Settings", icon: Settings },
@@ -54,13 +58,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       {/* Mobile Top Bar */}
       <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b border-slate-200 z-40 px-4 flex items-center justify-between shadow-sm">
         <div className="flex items-center gap-2">
-          <div className="bg-blue-600 p-1.5 rounded-lg text-white">
-            <Stethoscope size={20} />
+          <div className="bg-primary p-1.5 rounded-lg text-white">
+            <Sparkles size={20} />
           </div>
-          <span className="font-bold text-slate-900">NeuroCare</span>
+          <span className="font-bold text-slate-900">Masum's Dental</span>
         </div>
-        <button 
-          onClick={() => setIsSidebarOpen(!isSidebarOpen)} 
+        <button
+          onClick={() => setIsSidebarOpen(!isSidebarOpen)}
           className="p-2 text-slate-600 hover:bg-slate-100 rounded-xl transition-colors"
         >
           {isSidebarOpen ? <X size={24} /> : <Menu size={24} />}
@@ -69,7 +73,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
       {/* Sidebar Overlay (Mobile) */}
       {isSidebarOpen && (
-        <div 
+        <div
           className="md:hidden fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-40 transition-opacity"
           onClick={() => setIsSidebarOpen(false)}
         />
@@ -84,46 +88,44 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       `}>
         {/* Sidebar Header */}
         <div className={`p-6 border-b border-slate-100 flex items-center h-20 transition-all duration-300 ${isCollapsed ? "justify-center px-2" : "justify-between"}`}>
-          <div className={`flex items-center gap-3 transition-all duration-300 ${isCollapsed ? "w-0 opacity-0 overflow-hidden" : "w-auto opacity-100"}`}>
-            <div className="bg-blue-600 p-2 rounded-xl text-white shadow-lg shadow-blue-600/20 shrink-0">
-              <Stethoscope size={22} />
-            </div>
+          <div className="flex items-center gap-3 transition-all duration-300 ${isCollapsed ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100'}">
+            <div className="bg-primary p-2 rounded-xl text-white shadow-lg shadow-primary/20">
+            <Sparkles size={24} />
+          </div>
             <h2 className="text-lg font-black text-slate-900 tracking-tight whitespace-nowrap">
-              NeuroCare <span className="text-blue-600">Admin</span>
+              Masum's Dental <span className="text-primary">Admin</span>
             </h2>
           </div>
           <div className={`hidden md:flex transition-all duration-300 ${isCollapsed ? "" : ""}`}>
-             <button 
+             <button
                 onClick={() => setIsCollapsed(!isCollapsed)}
-                className="p-2 text-slate-400 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 rounded-xl transition-all border border-transparent hover:border-blue-100 shrink-0"
+                className="p-2 text-slate-400 hover:text-primary bg-slate-50 hover:bg-primary/5 rounded-xl transition-all border border-transparent hover:border-primary/10 shrink-0"
               >
                 {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
               </button>
           </div>
         </div>
-        
+
         {/* Navigation */}
         <nav className="flex-1 p-4 space-y-1.5 overflow-y-auto">
           {navItems.map((item) => {
             const isActive = pathname === item.href;
             return (
-              <Link 
+              <Link
                 key={item.href}
-                href={item.href} 
-                className={`
-                  flex items-center gap-3 px-3 py-3 rounded-2xl transition-all group relative
-                  ${isActive 
-                    ? "bg-slate-900 text-white shadow-lg shadow-slate-900/10" 
-                    : "text-slate-500 hover:bg-slate-50 hover:text-slate-900"
-                  }
-                `}
+                href={item.href}
+                className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl font-bold transition-all relative group ${
+                isActive
+                  ? "bg-primary text-white shadow-lg shadow-primary/20"
+                  : "text-slate-500 hover:text-primary hover:bg-primary/5"
+              }`}
                 title={isCollapsed ? item.label : ""}
               >
                 <div className={`${isCollapsed ? "w-full flex justify-center" : ""}`}>
-                  <item.icon size={20} className={`${isActive ? "text-white" : "group-hover:text-blue-600 transition-colors"}`} />
+                  <item.icon size={20} className={`${isActive ? "text-white" : "group-hover:text-primary transition-colors"}`} />
                 </div>
                 {!isCollapsed && <span className="font-bold text-[13px] uppercase tracking-wider">{item.label}</span>}
-                
+
                 {/* Tooltip for collapsed mode */}
                 {isCollapsed && (
                   <div className="absolute left-14 bg-slate-900 text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 pointer-events-none transition-all whitespace-nowrap z-[60] ml-2 shadow-xl border border-slate-800">
@@ -133,23 +135,22 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               </Link>
             );
           })}
-          
+
           <div className="pt-4 mt-4 border-t border-slate-100">
-            <Link 
-              href="/" 
-              className={`
-                flex items-center gap-3 px-3 py-3 rounded-2xl transition-all group relative
-                text-slate-500 hover:bg-blue-50 hover:text-blue-600
+            <Link
+              href="/"
+              className={`flex items-center gap-3 px-4 py-3.5 rounded-2xl font-bold transition-all relative group
+                text-slate-500 hover:bg-primary/5 hover:text-primary
               `}
               title={isCollapsed ? "Visit Main Site" : ""}
             >
               <div className={`${isCollapsed ? "w-full flex justify-center" : ""}`}>
-                <Globe2 size={20} className="group-hover:text-blue-600 transition-colors" />
+                <Globe2 size={20} className="group-hover:text-primary transition-colors" />
               </div>
               {!isCollapsed && <span className="font-bold text-[13px] uppercase tracking-wider">Visit Main Site</span>}
-              
+
               {isCollapsed && (
-                <div className="absolute left-14 bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 pointer-events-none transition-all whitespace-nowrap z-[60] ml-2 shadow-xl border border-blue-500">
+                <div className="absolute left-14 bg-primary text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 pointer-events-none transition-all whitespace-nowrap z-[60] ml-2 shadow-xl border border-primary/20">
                   Visit Main Site
                 </div>
               )}
@@ -159,18 +160,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
         {/* Sidebar Footer */}
         <div className="p-4 border-t border-slate-100">
-           <button 
+           <button
             onClick={handleLogout}
-            className={`
-              w-full flex items-center gap-3 px-3 py-3 rounded-2xl text-slate-400 hover:bg-red-50 hover:text-red-600 transition-all group relative
-            `}
-            title={isCollapsed ? "Logout" : ""}
+            className="w-full flex items-center gap-3 px-4 py-3.5 rounded-2xl font-bold text-red-500 hover:bg-red-50 transition-all mt-2"
           >
             <div className={`${isCollapsed ? "w-full flex justify-center" : ""}`}>
               <LogOut size={20} className="group-hover:text-red-600 transition-colors" />
             </div>
             {!isCollapsed && <span className="font-bold text-[13px] uppercase tracking-wider">Logout</span>}
-            
+
             {/* Tooltip for collapsed mode */}
             {isCollapsed && (
               <div className="absolute left-14 bg-red-600 text-white px-3 py-1.5 rounded-lg text-xs font-bold opacity-0 group-hover:opacity-100 pointer-events-none transition-all whitespace-nowrap z-[60] ml-2 shadow-xl">

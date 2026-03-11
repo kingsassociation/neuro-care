@@ -185,7 +185,7 @@ export default function PrescriptionForm() {
             <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Select Chamber:</label>
             <select 
               {...register("chamberId")} 
-              className="p-2 border rounded-md text-sm font-medium bg-gray-50 focus:ring-blue-500 focus:border-blue-500 w-full sm:w-auto"
+              className="p-2 border rounded-md text-sm font-medium bg-gray-50 focus:ring-primary focus:border-primary w-full sm:w-auto"
             >
               {chambers.map(c => (
                 <option key={c.id} value={c.id}>{c.name} ({c.type})</option>
@@ -243,21 +243,21 @@ export default function PrescriptionForm() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Symptoms / Chief Complaints</label>
-            <textarea {...register("symptoms")} className="w-full p-2 border rounded-md" rows={2} placeholder="e.g. Chronic Headache, Nausea, Vertigo"></textarea>
+            <textarea {...register("symptoms")} className="w-full p-2 border rounded-md" rows={2} placeholder="e.g. Toothache, Gum Bleeding, Sensitivity, Cavity"></textarea>
           </div>
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Diagnosis</label>
-            <input {...register("diagnosis")} className="w-full p-2 border rounded-md" placeholder="e.g. Migraine without aura" />
+            <input {...register("diagnosis")} className="w-full p-2 border rounded-md" placeholder="e.g. Dental Caries, Gingerities, Impacted Tooth" />
           </div>
 
           <div className="border-t pt-4">
             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-4">
-              <label className="block text-lg font-medium text-gray-800">Medications <span className="text-blue-600 text-xl font-serif">Rx</span></label>
+              <label className="block text-lg font-medium text-gray-800">Medications <span className="text-primary text-xl font-serif">Rx</span></label>
               <button 
                 type="button" 
                 onClick={() => append({ name: "", dosage: "", frequency: "", duration: "" })}
-                className="text-sm bg-blue-50 px-4 py-2 rounded-md text-blue-600 font-medium flex items-center gap-1 hover:bg-blue-100 transition w-full sm:w-auto justify-center"
+                className="text-sm bg-primary/5 px-4 py-2 rounded-md text-primary font-medium flex items-center gap-1 hover:bg-primary/10 transition w-full sm:w-auto justify-center"
               >
                 <Plus size={16} /> Add Drug
               </button>
@@ -325,7 +325,7 @@ export default function PrescriptionForm() {
 
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Investigations / Tests Advised</label>
-            <textarea {...register("tests")} className="w-full p-2 border rounded-md" rows={2} placeholder="e.g. MRI of Brain, CBC, Serum Creatinine"></textarea>
+            <textarea {...register("tests")} className="w-full p-2 border rounded-md" rows={2} placeholder="e.g. X-ray OPG, Bitewing X-ray, Dental Scaling"></textarea>
           </div>
 
           <div>
@@ -350,7 +350,7 @@ export default function PrescriptionForm() {
             <button 
               type="button" 
               onClick={() => setShowPreview(true)}
-              className="bg-blue-50 text-blue-700 border border-blue-200 p-3 rounded-lg font-medium hover:bg-blue-100 flex justify-center items-center gap-2 transition w-full"
+              className="bg-primary/5 text-primary border border-primary/20 p-3 rounded-lg font-medium hover:bg-primary/10 flex justify-center items-center gap-2 transition w-full"
             >
               View Preview
             </button>
@@ -358,7 +358,7 @@ export default function PrescriptionForm() {
             <button 
               type="button" 
               onClick={() => handlePrint()}
-              className="bg-blue-600 text-white p-3 rounded-lg font-medium hover:bg-blue-700 flex justify-center items-center gap-2 transition w-full"
+              className="bg-primary text-white p-3 rounded-lg font-medium hover:bg-primary/90 flex justify-center items-center gap-2 transition w-full"
             >
               <Printer size={20} /> Print Now
             </button>

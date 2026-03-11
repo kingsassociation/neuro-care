@@ -5,18 +5,18 @@ import { Quote, Star, User } from "lucide-react";
 const testimonials = [
   {
     name: "Rahim Uddin",
-    role: "Spine Surgery Patient",
-    content: "After years of suffering from severe disc herniation, the minimally invasive spine surgery performed by the doctor changed my life. I was walking the very next day!"
+    role: "Wisdom Tooth Surgery",
+    content: "I was very nervous about my wisdom tooth extraction, but Dr. Masum made it completely painless. I was back to my routine the next day!"
   },
   {
     name: "Ayesha Parveen",
-    role: "Brain Tumor Survivor",
-    content: "The diagnosis of a brain tumor was terrifying, but the compassion and world-class surgical precision I experienced at Sevron Hospital gave me a second chance at life."
+    role: "Dental Implant Patient",
+    content: "The dental implant procedure was seamless. My new tooth looks and feels completely natural. Truly an exclusive dental solution!"
   },
   {
     name: "Kamal Hossain",
-    role: "Stroke Recovery",
-    content: "The rapid response and emergency intervention during my stroke were nothing short of a miracle. I am forever grateful for the incredible neurological care."
+    role: "Aesthetic Dentistry",
+    content: "The smile makeover I received has given me a new level of confidence. Dr. Masum's attention to detail is truly world-class."
   }
 ];
 
@@ -31,7 +31,7 @@ const Testimonials = () => {
             Stories of <span className="text-gradient">Recovery & Hope</span>
           </h3>
           <p className="text-sm md:text-base text-foreground/60 leading-relaxed px-4 md:px-0">
-            Real experiences from patients who entrusted us with complex neurological and spinal surgeries.
+            Real experiences from patients who entrusted us with their smiles and complex oral surgeries.
           </p>
         </div>
 

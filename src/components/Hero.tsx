@@ -14,15 +14,15 @@ const Hero = () => {
             <div className="w-full lg:w-1/2 p-6 md:p-12 lg:p-16 space-y-6 md:space-y-8">
               <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/30 shadow-sm">
                 <span className="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
-                <span className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-foreground/70">Top Neurosurgeon in Chattogram</span>
+                <span className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-foreground/70">Top Dental Specialist in Chattogram</span>
               </div>
 
               <h1 className="text-2xl sm:text-3xl lg:text-5xl font-bold leading-[1.2] lg:leading-[1.1] tracking-tight text-foreground">
-                Expert <span className="text-primary italic">Neurosurgery</span> & Brain Care.
+                An Exclusive <span className="text-primary italic">Dental</span> Solution.
               </h1>
 
               <p className="text-base md:text-lg text-foreground/60 leading-relaxed max-w-xl">
-                Delivering world-class neurological care and minimally invasive spine surgery by the leading specialist from Chattogram Medical College.
+                Delivering world-class dental care and advanced oral surgery by the leading specialist Dr. Abdullah Al Masum (BDS, PGT).
               </p>
 
               <div className="flex flex-col sm:flex-row items-center gap-3 md:gap-4">
@@ -52,7 +52,7 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="space-y-0.5 md:space-y-1">
-                  <p className="text-xs md:text-sm font-bold text-foreground">Successful Complex Surgeries</p>
+                  <p className="text-xs md:text-sm font-bold text-foreground">Successful Dental Procedures</p>
                   <div className="flex items-center gap-1">
                     {[1, 2, 3, 4, 5].map((i) => (
                       <span key={i} className="text-yellow-500 text-[10px]">★</span>
@@ -66,13 +66,13 @@ const Hero = () => {
             {/* Content Right - Hero Image */}
             <div className="w-full lg:w-1/2 relative min-h-[400px] sm:min-h-[500px] lg:min-h-[650px] flex items-center justify-center">
               <div className="absolute inset-0 bg-gradient-to-t from-primary/30 to-transparent mix-blend-overlay"></div>
-              
+
               <div className="relative z-10 w-[70%] sm:w-[80%] aspect-square max-w-[500px] animate-bounce-slow">
                 <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-secondary/20 rounded-[2.5rem] md:rounded-[3rem] rotate-6 scale-105 -z-10 blur-xl"></div>
                 <div className="w-full h-full rounded-[2.5rem] md:rounded-[3rem] overflow-hidden border-[6px] md:border-8 border-white/60 shadow-2xl relative">
-                  <Image 
+                  <Image
                     src="/hero-concept.png"
-                    alt="Neurosurgery Expertise" 
+                    alt="Dental Surgery Expertise"
                     fill
                     className="object-cover hover:scale-105 transition-transform duration-700"
                     priority
@@ -89,13 +89,13 @@ const Hero = () => {
                   </div>
                   <div>
                     <p className="text-[8px] md:text-[10px] font-bold text-foreground/40 uppercase tracking-widest">Emergency</p>
-                    <p className="text-[10px] md:text-sm font-bold text-foreground whitespace-nowrap">+880 1812-345678</p>
+                    <p className="text-[10px] md:text-sm font-bold text-foreground whitespace-nowrap">01712-260461</p>
                   </div>
                 </div>
               </div>
 
               <div className="absolute bottom-1/4 right-4 lg:right-0 glass p-3 md:p-4 rounded-xl md:rounded-2xl shadow-xl z-20 flex items-center gap-2 md:gap-3 border border-white/40">
-                <div className="bg-green-500/20 p-1.5 md:p-2 rounded-lg md:rounded-xl text-green-500">
+                <div className="bg-primary/20 p-1.5 md:p-2 rounded-lg md:rounded-xl text-primary">
                   <CheckCircle2 size={18} className="md:w-6 md:h-6" />
                 </div>
                 <div>

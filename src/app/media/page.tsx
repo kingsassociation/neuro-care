@@ -6,33 +6,33 @@ import Link from "next/link";
 import { useState } from "react";
 
 const photos = [
-  { src: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=600", alt: "Advanced MRI Tech" },
-  { src: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=600", alt: "International Neurology Conference" },
-  { src: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=600", alt: "Surgical Team in OR" },
-  { src: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=600", alt: "Operating Microscope" },
-  { src: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?auto=format&fit=crop&q=80&w=600", alt: "Patient Consultation" },
-  { src: "https://images.unsplash.com/photo-1514416432279-50fac261c7dd?auto=format&fit=crop&q=80&w=600", alt: "Award Ceremony" }
+  { src: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=600", alt: "Modern Dental Clinic" },
+  { src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=600", alt: "Dental Surgery Equipment" },
+  { src: "https://images.unsplash.com/photo-1460672985063-6764ac8b9c74?auto=format&fit=crop&q=80&w=600", alt: "Patient Consultation" },
+  { src: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=600", alt: "Dental Implants" },
+  { src: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&q=80&w=600", alt: "Sterilized Instruments" },
+  { src: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600", alt: "Smiling Patient" }
 ];
 
 const videos = [
   { 
-    title: "Understanding Brain Tumors - Live TV Interview", 
-    desc: "A morning show segment explaining the early signs of brain tumors.",
-    duration: "12:45",
+    title: "The Future of Dental Implants", 
+    desc: "Dr. Abdullah Al Masum explains the benefits of modern dental implants.",
+    duration: "10:20",
     thumb: "",
-    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/EAA1QQn56A0?si=3V3bpYWFw0z3TPzh" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/5-7n9M-K6-I?si=WpXG2mFw0V8b6V7z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
   },
   { 
-    title: "Minimally Invasive Spine Surgery Seminar", 
-    desc: "Keynote presentation at the Dhaka Medical Conference.",
-    duration: "45:20",
+    title: "Painless Wisdom Tooth Surgery", 
+    desc: "A seminar on the latest techniques for surgical tooth extraction.",
+    duration: "15:45",
     thumb: "",
-    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/pXjsU5fca8g?si=rx2hbEUn0ySfPXmY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
+    video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/j_N8lVp3p-k?si=E1nO9qD4uG6g9r8z" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
   },
   { 
-    title: "Post-Surgery Care Guidelines", 
-    desc: "An educational video for patients recovering from neurosurgery.",
-    duration: "08:15",
+    title: "Corrective Braces for All Ages", 
+    desc: "Educational content on orthodontic treatments and options.",
+    duration: "07:30",
     thumb: "",
     video: `<iframe width="560" height="315" src="https://www.youtube.com/embed/9kaHD0uSBDQ?si=EmifKyH028qIVdO_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>`
   }
@@ -74,7 +74,7 @@ export default function MediaPage() {
             Media & <span className="text-secondary italic">Gallery</span>
           </h1>
           <p className="text-lg lg:text-xl text-slate-600 leading-relaxed">
-            Explore keynote seminars, surgical milestones, educational health broadcasts, and behind-the-scenes glimpses into the operating theater.
+            Explore our state-of-the-art dental clinic, surgical milestones, and educational health broadcasts by Dr. Abdullah Al Masum.
           </p>
         </div>
 

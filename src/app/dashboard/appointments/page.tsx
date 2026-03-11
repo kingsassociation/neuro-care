@@ -72,7 +72,7 @@ export default function AppointmentsPage() {
                 </td>
                 <td className="p-4">
                   <div className="flex items-center gap-2 text-gray-800 font-medium">
-                    <Calendar size={16} className="text-blue-500" />
+                    <Calendar size={16} className="text-primary" />
                     {new Date(appt.date).toLocaleDateString()}
                   </div>
                   <div className="flex items-center gap-2 text-gray-500 text-sm mt-1">
@@ -84,7 +84,7 @@ export default function AppointmentsPage() {
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${
                     appt.status === 'completed' ? 'bg-green-100 text-green-700' : 
                     appt.status === 'pending' ? 'bg-yellow-100 text-yellow-700' :
-                    appt.status === 'confirmed' ? 'bg-blue-100 text-blue-700' :
+                    appt.status === 'confirmed' ? 'bg-primary/10 text-primary' :
                     'bg-red-100 text-red-700'
                   }`}>
                     {appt.status.charAt(0).toUpperCase() + appt.status.slice(1)}
@@ -102,7 +102,7 @@ export default function AppointmentsPage() {
                   {appt.status === 'pending' && (
                      <button 
                        onClick={() => handleStatusChange(appt.id, 'confirmed')}
-                       className="text-blue-600 hover:bg-blue-50 px-3 py-1 rounded-md text-sm font-medium transition ml-2"
+                       className="text-primary hover:bg-primary/5 px-3 py-1 rounded-md text-sm font-medium transition ml-2"
                      >
                        Confirm
                      </button>
@@ -110,7 +110,7 @@ export default function AppointmentsPage() {
                   
                   <a 
                     href={`/dashboard/prescriptions/new?patientId=${appt.patientId}&appointmentId=${appt.id}`}
-                    className="text-indigo-600 hover:bg-indigo-50 px-3 py-1 rounded-md text-sm font-medium transition ml-2 inline-block"
+                    className="text-secondary hover:bg-secondary/5 px-3 py-1 rounded-md text-sm font-medium transition ml-2 inline-block"
                   >
                     Write Rx
                   </a>

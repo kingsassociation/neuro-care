@@ -3,51 +3,51 @@ import Image from "next/image";
 import Link from "next/link";
 
 const featuredArticle = {
-  title: "The Future of Minimally Invasive Spine Surgery: What You Need to Know",
-  excerpt: "Advancements in micro-neurosurgery are reducing recovery times from months to days. Dr. Name explores the cutting-edge technology that makes it possible.",
-  date: "Mar 20, 2024",
-  category: "Medical Innovation",
+  title: "The Science of Modern Dental Implants: Why They Are the Best Solution",
+  excerpt: "Advancements in dental implantology are revolutionizing how we replace missing teeth. Dr. Abdullah Al Masum explores the cutting-edge technology behind permanent smile restoration.",
+  date: "Mar 20, 2026",
+  category: "Innovation",
   readTime: "8 min read",
-  image: "https://images.unsplash.com/photo-1559757175-5700dde675bc?auto=format&fit=crop&q=80&w=1200",
-  slug: "future-of-minimally-invasive-spine-surgery"
+  image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=1200",
+  slug: "science-of-modern-dental-implants"
 };
 
 const articles = [
   {
-    title: "10 Early Warning Signs of a Stroke You Must Never Ignore",
-    excerpt: "Time is brain. Learn what subtle symptoms to look for and when to call emergency services instantly.",
-    date: "Mar 12, 2024",
-    category: "Neurology",
+    title: "Wisdom Tooth Extraction: When Is Surgery Necessary?",
+    excerpt: "Learn about the symptoms that indicate your wisdom teeth need to be removed and what to expect during the painless procedure.",
+    date: "Mar 12, 2026",
+    category: "Oral Surgery",
     readTime: "5 min read",
-    image: "https://images.unsplash.com/photo-1579684453423-f84349ef60b0?auto=format&fit=crop&q=80&w=800",
-    slug: "10-early-warning-signs-of-a-stroke"
+    image: "https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=800",
+    slug: "wisdom-tooth-extraction-guide"
   },
   {
-    title: "Living with Migraines: Medical Myths vs Surgical Facts",
-    excerpt: "When does a headache become a surgical concern? Breaking down the complex truths behind severe chronic migraines.",
-    date: "Feb 28, 2024",
-    category: "Health Tips",
+    title: "Orthodontics for Adults: It's Never Too Late for a Perfect Smile",
+    excerpt: "Discover modern alignment options from ceramic braces to clear aligners that fit your professional lifestyle.",
+    date: "Feb 28, 2026",
+    category: "Orthodontics",
     readTime: "6 min read",
-    image: "https://images.unsplash.com/photo-1581594693702-fbdc51b2763b?auto=format&fit=crop&q=80&w=800",
-    slug: "living-with-migraines-myths-vs-facts"
+    image: "https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=800",
+    slug: "orthodontics-for-adults"
   },
   {
-    title: "Post-Surgery Spine Care: How to Recover Without Complications",
-    excerpt: "Undergoing a micro-discectomy? Here is your complete guide to a foolproof 6-week recovery plan.",
-    date: "Jan 15, 2024",
-    category: "Spine Care",
+    title: "Root Canal Treatment: Debunking Common Pain Myths",
+    excerpt: "Many fear root canals, but with modern anesthesia and techniques, it's no more uncomfortable than a standard filling.",
+    date: "Jan 15, 2026",
+    category: "Endodontics",
     readTime: "12 min read",
-    image: "https://images.unsplash.com/photo-1582719471384-894fbb16e074?auto=format&fit=crop&q=80&w=800",
-    slug: "post-surgery-spine-care-recovery"
+    image: "https://images.unsplash.com/photo-1571772996211-2f02c9727629?auto=format&fit=crop&q=80&w=800",
+    slug: "root-canal-myths-vs-facts"
   },
   {
-    title: "Understanding Brain Tumors: Types, Symptoms, and Action Plans",
-    excerpt: "A comprehensive breakdown of benign vs malignant tumors, and the surgical strategies used to tackle them.",
-    date: "Nov 30, 2023",
-    category: "Oncology",
+    title: "Aesthetic Dentistry: Smile Makeovers That Change Lives",
+    excerpt: "A comprehensive look at veneers, whitening, and contouring to achieve the exclusive dental solution you deserve.",
+    date: "Nov 30, 2025",
+    category: "Aesthetics",
     readTime: "10 min read",
-    image: "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?auto=format&fit=crop&q=80&w=800",
-    slug: "understanding-brain-tumors"
+    image: "https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=800",
+    slug: "aesthetic-dentistry-makeovers"
   }
 ];
 
@@ -65,10 +65,10 @@ export default function BlogPage() {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="space-y-4 max-w-2xl">
             <h1 className="text-3xl lg:text-5xl font-bold tracking-tight text-slate-900 border-b-4 border-primary pb-4 inline-block leading-[1.1]">
-              Neuro Health Journal
+              Oral Health Journal
             </h1>
             <p className="text-lg lg:text-xl text-slate-600">
-              Expert medical insights, preventative care tips, and breakthrough surgical news directly from the desk of the surgeon.
+              Expert dental insights, preventative care tips, and breakthrough surgical news directly from Dr. Abdullah Al Masum.
             </p>
           </div>
           

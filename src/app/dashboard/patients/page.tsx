@@ -31,7 +31,7 @@ export default function PatientsListPage() {
             placeholder="Search patients..." 
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-10 pr-4 py-2 border rounded-lg w-full sm:w-64 focus:ring-2 focus:ring-blue-500 outline-none"
+            className="pl-10 pr-4 py-2 border rounded-lg w-full sm:w-64 focus:ring-2 focus:ring-primary outline-none"
           />
         </div>
       </div>
@@ -52,7 +52,7 @@ export default function PatientsListPage() {
               <tr key={patient.id} className="border-b hover:bg-gray-50 transition">
                 <td className="p-4">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center font-bold">
+                    <div className="w-10 h-10 bg-primary/10 text-primary rounded-full flex items-center justify-center font-bold">
                       {patient.name.charAt(0)}
                     </div>
                     <span className="font-medium text-gray-900">{patient.name}</span>
@@ -67,7 +67,7 @@ export default function PatientsListPage() {
                 </td>
                 <td className="p-4">
                   <div className="flex gap-2">
-                    <Link href={`/dashboard/patients/${patient.id}`} className="text-blue-600 hover:text-blue-800 text-sm font-medium">
+                    <Link href={`/dashboard/patients/${patient.id}`} className="text-primary hover:text-secondary text-sm font-medium">
                       View History
                     </Link>
                   </div>

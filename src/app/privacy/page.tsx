@@ -28,7 +28,7 @@ export default function PrivacyPage() {
                 <Eye className="text-primary" size={24} /> 1. Overview
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                At NeuroCare Surgery, we prioritize the privacy and security of our patients' information. This Privacy Policy outlines how we collect, use, and protect your personal data when you use our website and booking services.
+                At Masum's Dental Clinic, we prioritize the privacy and security of our patients' information. This Privacy Policy outlines how we collect, use, and protect your personal data when you use our website and booking services.
               </p>
             </section>
 
@@ -43,7 +43,7 @@ export default function PrivacyPage() {
                 {[
                   "Full Name & Age",
                   "Phone Number",
-                  "Medical Concerns (Short description)",
+                  "Dental Concerns (Short description)",
                   "Appointment Preferences",
                   "Device & IP Information (for security)"
                 ].map((item, idx) => (
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
               <div className="space-y-3">
                 <div className="flex gap-4 items-start">
                   <div className="shrink-0 w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">01</div>
-                  <p className="text-slate-600 text-sm italic">To verify and confirm your neurosurgery serial/appointment via phone call.</p>
+                  <p className="text-slate-600 text-sm italic">To verify and confirm your dental serial/appointment via phone call.</p>
                 </div>
                 <div className="flex gap-4 items-start">
                   <div className="shrink-0 w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center font-bold text-sm">02</div>
@@ -89,7 +89,7 @@ export default function PrivacyPage() {
 
             <div className="pt-10 border-t border-slate-100">
               <p className="text-slate-500 text-sm text-center">
-                For any privacy-related inquiries, please contact us at <span className="text-primary font-bold">privacy@neurocare.com</span>
+                For any privacy-related inquiries, please contact us at <span className="text-primary font-bold">info@masumsdental.com</span>
               </p>
             </div>
           </div>

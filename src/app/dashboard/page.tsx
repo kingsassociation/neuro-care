@@ -52,7 +52,7 @@ export default function DashboardOverview() {
             <p className="text-gray-400 text-xs font-bold uppercase tracking-widest">Today's Appointments</p>
             <h3 className="text-3xl font-bold mt-2 text-slate-800">{loading ? "..." : stats.todayAppointments}</h3>
           </div>
-          <div className="p-4 bg-blue-50 text-blue-600 rounded-2xl">
+          <div className="p-4 bg-primary/10 text-primary rounded-2xl">
             <CalendarDays size={24} />
           </div>
         </div>
@@ -95,13 +95,13 @@ export default function DashboardOverview() {
            </div>
            <div className="relative z-10 space-y-6">
               <div className="space-y-2">
-                <h4 className="text-blue-400 font-bold uppercase tracking-widest text-xs">Quick Actions</h4>
+                <h4 className="text-primary/70 font-bold uppercase tracking-widest text-xs">Quick Actions</h4>
                 <h2 className="text-3xl font-bold tracking-tight">Streamline Your Practice</h2>
               </div>
-              <p className="text-slate-400 max-w-md leading-relaxed">NeuroCare helps you manage patients and prescriptions with minimal effort. Start a new visit now.</p>
+              <p className="text-slate-400 max-w-md leading-relaxed">Masum's Dental Clinic helps you manage patients and prescriptions with minimal effort. Start a new dental visit now.</p>
               
               <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                <Link href="/dashboard/appointments" className="px-8 py-4 bg-blue-600 text-white rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-900/40 text-center active:scale-95">
+                <Link href="/dashboard/appointments" className="px-8 py-4 bg-primary text-white rounded-2xl font-bold hover:bg-primary/90 transition shadow-lg shadow-primary/40 text-center active:scale-95">
                   View Appts
                 </Link>
                 <Link href="/dashboard/prescriptions/new" className="px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white rounded-2xl font-bold transition text-center active:scale-95">
@@ -113,7 +113,7 @@ export default function DashboardOverview() {
 
         <div className="bg-white p-8 rounded-[2rem] border shadow-sm space-y-6">
            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-50 text-blue-600 rounded-lg">
+              <div className="p-2 bg-primary/10 text-primary rounded-lg">
                  <MapPin size={20} />
               </div>
               <h4 className="font-bold text-lg text-slate-800">Your Chambers</h4>

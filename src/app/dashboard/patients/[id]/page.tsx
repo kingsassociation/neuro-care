@@ -39,7 +39,7 @@ export default function PatientHistoryPage() {
       {/* Profile Card */}
       <div className="bg-white p-6 justify-between rounded-xl border shadow-sm flex items-start">
         <div className="flex gap-6">
-          <div className="w-20 h-20 bg-blue-100 text-blue-700 rounded-full flex items-center justify-center text-3xl font-bold">
+          <div className="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center text-3xl font-bold">
             {patient.name.charAt(0)}
           </div>
           <div>
@@ -63,7 +63,7 @@ export default function PatientHistoryPage() {
         
         <Link 
           href={`/dashboard/prescriptions/new?patientId=${patient.id}`}
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 flex items-center gap-2 transition"
+          className="bg-primary text-white px-4 py-2 rounded-lg font-medium hover:bg-primary/90 flex items-center gap-2 transition"
         >
           <FileText size={18} /> New Prescription
         </Link>
@@ -72,7 +72,7 @@ export default function PatientHistoryPage() {
       {/* History Timeline */}
       <div className="mt-8">
         <h2 className="text-xl font-bold text-gray-900 mb-6 flex items-center gap-2 border-b pb-2">
-          <Clock size={20} className="text-blue-600" /> Visit History
+          <Clock size={20} className="text-primary" /> Visit History
         </h2>
         
         <div className="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-300 before:to-transparent">
@@ -109,7 +109,7 @@ export default function PatientHistoryPage() {
               const presc = event.presc;
               return (
                 <div key={event.id} className="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-blue-100 text-blue-600 shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow z-10 transition-transform group-hover:scale-110">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-full border border-white bg-primary/10 text-primary shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 shadow z-10 transition-transform group-hover:scale-110">
                     <Calendar size={18} />
                   </div>
                   <div className="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] bg-white p-5 rounded-xl border shadow-sm group-hover:shadow-md transition">
@@ -122,7 +122,7 @@ export default function PatientHistoryPage() {
                           <span className="text-[10px] text-gray-500 font-bold">{event.chamberName}</span>
                         </div>
                       </div>
-                      <span className="text-sm font-medium text-blue-600 bg-blue-50 px-2.5 py-1 rounded-lg border border-blue-100 shadow-sm">{event.timeSlot}</span>
+                      <span className="text-sm font-medium text-primary bg-primary/5 px-2.5 py-1 rounded-lg border border-primary/10 shadow-sm">{event.timeSlot}</span>
                     </div>
                     {presc ? (
                       <div className="mt-4 text-sm text-gray-700 space-y-3 border-t pt-4">
@@ -145,7 +145,7 @@ export default function PatientHistoryPage() {
                         <div className="flex pt-2">
                           <Link 
                             href={`/dashboard/prescriptions/new?patientId=${patient.id}&prescriptionId=${presc.id}`}
-                            className="bg-blue-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-blue-700 transition flex items-center gap-2 active:scale-95 shadow-lg shadow-blue-900/10"
+                            className="bg-primary text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-primary/90 transition flex items-center gap-2 active:scale-95 shadow-lg shadow-primary/20"
                           >
                             <FileText size={14} /> View/Edit Prescription
                           </Link>

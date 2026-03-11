@@ -133,7 +133,7 @@ export default function SchedulePage() {
         <button 
           onClick={handleSave}
           disabled={isSaving}
-          className="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-700 flex items-center gap-2 shadow-sm disabled:opacity-50 transition-all"
+          className="bg-primary text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-primary/90 flex items-center gap-2 shadow-sm disabled:opacity-50 transition-all"
         >
           <Save size={18} /> {isSaving ? 'Saving...' : 'Save All Shifts'}
         </button>
@@ -156,7 +156,7 @@ export default function SchedulePage() {
                 <h3 className="font-bold text-gray-800">{dayName}</h3>
                 <button 
                   onClick={() => addShift(dayIndex)}
-                  className="text-blue-600 hover:bg-blue-50 px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors border border-blue-100"
+                  className="text-primary hover:bg-primary/5 px-3 py-1 rounded-md text-xs font-bold flex items-center gap-1.5 transition-colors border border-primary/20"
                 >
                   <Plus size={14} /> Add Shift
                 </button>
@@ -174,7 +174,7 @@ export default function SchedulePage() {
                            <select 
                              value={shift.chamberId}
                              onChange={(e) => handleUpdate(globalIdx, "chamberId", e.target.value)}
-                             className="text-sm font-semibold text-gray-700 border-none bg-transparent p-0 focus:ring-0 cursor-pointer hover:text-blue-600 transition"
+                             className="text-sm font-semibold text-gray-700 border-none bg-transparent p-0 focus:ring-0 cursor-pointer hover:text-primary transition"
                            >
                              {chambers.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
                            </select>
@@ -187,7 +187,7 @@ export default function SchedulePage() {
                                 type="time" 
                                 value={shift.startTime}
                                 onChange={(e) => handleUpdate(globalIdx, "startTime", e.target.value)}
-                                className="border rounded px-2 py-1 text-sm font-medium outline-none focus:border-blue-500"
+                                className="border rounded px-2 py-1 text-sm font-medium outline-none focus:border-primary"
                               />
                            </div>
                            <div className="flex items-center gap-2">
@@ -196,7 +196,7 @@ export default function SchedulePage() {
                                 type="time" 
                                 value={shift.endTime}
                                 onChange={(e) => handleUpdate(globalIdx, "endTime", e.target.value)}
-                                className="border rounded px-2 py-1 text-sm font-medium outline-none focus:border-blue-500"
+                                className="border rounded px-2 py-1 text-sm font-medium outline-none focus:border-primary"
                               />
                            </div>
                         </div>
@@ -206,7 +206,7 @@ export default function SchedulePage() {
                            <select 
                              value={shift.slotDuration}
                              onChange={(e) => handleUpdate(globalIdx, "slotDuration", parseInt(e.target.value))}
-                             className="border rounded px-2 py-1 text-sm font-medium outline-none focus:border-blue-500"
+                             className="border rounded px-2 py-1 text-sm font-medium outline-none focus:border-primary"
                            >
                               <option value={10}>10m</option>
                               <option value={15}>15m</option>
@@ -222,7 +222,7 @@ export default function SchedulePage() {
                                type="checkbox" 
                                checked={shift.isAvailable}
                                onChange={(e) => handleUpdate(globalIdx, "isAvailable", e.target.checked)}
-                               className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+                               className="w-4 h-4 text-primary rounded border-gray-300 focus:ring-primary"
                              />
                              <span className="text-xs font-bold text-gray-500 group-hover:text-gray-700 transition">Active</span>
                            </label>
@@ -248,9 +248,9 @@ export default function SchedulePage() {
         })}
       </div>
       
-      <div className="bg-blue-50 rounded-xl p-4 border border-blue-100 flex items-start gap-3">
-         <AlertCircle size={18} className="text-blue-500 mt-0.5" />
-         <div className="text-xs text-blue-700 leading-relaxed font-medium">
+      <div className="bg-primary/5 rounded-xl p-4 border border-primary/10 flex items-start gap-3">
+         <AlertCircle size={18} className="text-primary/70 mt-0.5" />
+         <div className="text-xs text-primary/80 leading-relaxed font-medium">
             <strong>Conflict Prevention:</strong> The system automatically blocks overlapping shifts on the same day across all your chambers to ensure realistic availability.
          </div>
       </div>

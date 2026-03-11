@@ -126,34 +126,33 @@ export default function Booking() {
             <div className="w-full lg:w-1/2 space-y-5 md:space-y-6">
               <div className="space-y-2 md:space-y-4">
                 <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-slate-900 leading-[1.2]">
-                  Book Your Chamber <span className="text-primary italic">Consultation</span>
+                  Book Your <span className="text-primary italic">Dental</span> Consultation
                 </h3>
                 <p className="text-slate-600 text-base md:text-lg lg:text-xl leading-relaxed">
-                  Get explicit priority booking at our Chattogram chambers. Fill out the details to lock your spot before arrival.
+                  Get priority serial booking for Dr. Abdullah Al Masum. Fill out the details to confirm your visit.
                 </p>
               </div>
 
               <div className="space-y-4 md:space-y-6">
-                {chambers.map((chamber, i) => (
-                  <div key={chamber.id} className="glass-light bg-white/50 border border-white/60 p-4 md:p-6 rounded-[1.8rem] md:rounded-3xl relative overflow-hidden group shadow-sm flex gap-3 md:gap-4">
-                    <div className={`absolute top-0 right-0 w-32 h-32 ${i % 2 === 0 ? 'bg-primary/20' : 'bg-secondary/20'} rounded-full blur-3xl transition-all duration-700`}></div>
-                    <div className={`${i % 2 === 0 ? 'bg-primary' : 'bg-secondary'} text-white p-2.5 md:p-3 rounded-xl md:rounded-2xl h-fit shadow-lg relative z-10`}>
-                      <MapPin size={20} className="md:w-6 md:h-6" />
+                <div className="glass-light bg-white/50 border border-white/60 p-4 md:p-6 rounded-[1.8rem] md:rounded-3xl relative overflow-hidden group shadow-sm flex gap-3 md:gap-4">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-primary/20 rounded-full blur-3xl transition-all duration-700"></div>
+                  <div className="bg-primary text-white p-2.5 md:p-3 rounded-xl md:rounded-2xl h-fit shadow-lg relative z-10">
+                    <MapPin size={20} className="md:w-6 md:h-6" />
+                  </div>
+                  <div className="space-y-1.5 md:space-y-2 relative z-10">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h4 className="font-bold text-lg md:text-xl text-slate-800">Masum's Dental Clinic</h4>
+                      <span className="px-2 py-0.5 rounded text-[8px] md:text-[10px] font-bold uppercase tracking-wider bg-primary/20 text-primary border border-primary/30">
+                        Main Chamber
+                      </span>
                     </div>
-                    <div className="space-y-1.5 md:space-y-2 relative z-10">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h4 className="font-bold text-lg md:text-xl text-slate-800">{chamber.name}</h4>
-                        <span className={`px-2 py-0.5 rounded text-[8px] md:text-[10px] font-bold uppercase tracking-wider ${i % 2 === 0 ? 'bg-primary/20 text-primary border border-primary/30' : 'bg-secondary/20 text-secondary border border-secondary/30'}`}>
-                          {chamber.type}
-                        </span>
-                      </div>
-                      <p className="text-slate-600 text-[12px] md:text-sm">{chamber.address}</p>
-                      <div className="flex items-center gap-2 text-slate-500 text-[12px] md:text-sm font-medium">
-                        <Phone size={12}/> {chamber.phone}
-                      </div>
+                    <p className="text-slate-600 text-[12px] md:text-sm">Gafur Mansion, 1107/A Love Lane, Chattogram</p>
+                    <div className="flex flex-col gap-1 text-slate-500 text-[12px] md:text-sm font-medium">
+                      <div className="flex items-center gap-2"><Phone size={12}/> 01712-260461</div>
+                      <div className="flex items-center gap-2 space-x-4"><Clock size={12}/> 10:00 AM – 2:00 PM, 4:00 PM – 10:00 PM</div>
                     </div>
                   </div>
-                ))}
+                </div>
               </div>
             </div>
 
@@ -292,8 +291,8 @@ export default function Booking() {
                   </div>
 
                   <div className="space-y-2">
-                    <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Medical Issue (Short)</label>
-                    <textarea value={formData.issue} onChange={e => setFormData({...formData, issue: e.target.value})} placeholder="e.g. Brain tumor consultation..." rows={2} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium text-slate-700 text-sm md:text-base"></textarea>
+                    <label className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-slate-400">Dental Issue (Short)</label>
+                    <textarea value={formData.issue} onChange={e => setFormData({...formData, issue: e.target.value})} placeholder="e.g. Tooth ache, cleaning, or implants..." rows={2} className="w-full bg-slate-50 border border-slate-200 rounded-xl py-3.5 md:py-4 px-5 md:px-6 focus:outline-none focus:ring-2 focus:ring-primary/20 transition-all resize-none font-medium text-slate-700 text-sm md:text-base"></textarea>
                   </div>
 
                   <button disabled={loading} type="submit" className="w-full flex justify-center items-center gap-2 bg-primary text-white py-4 md:py-5 rounded-xl md:rounded-2xl font-bold shadow-xl shadow-primary/20 hover:scale-[1.02] active:scale-95 transition-all text-base md:text-lg tracking-wide disabled:opacity-75 disabled:scale-100">

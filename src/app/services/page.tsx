@@ -1,88 +1,88 @@
-import { Activity, ArrowLeft, Brain, CalendarDays, Clock, FileSearch, ShieldAlert, ShieldCheck, UserCheck, ZapIcon } from "lucide-react";
+import { Activity, ArrowLeft, CalendarDays, Clock, FileSearch, Microscope, ShieldCheck, Sparkles, UserCheck } from "lucide-react";
 import Link from "next/link";
 
 const detailedServices = [
   {
-    category: "Neurosurgery & Oncology",
-    id: "neurosurgery-oncology",
-    icon: <Brain className="text-primary" size={28} />,
+    category: "Oral & Maxillofacial Surgery",
+    id: "oral-surgery",
+    icon: <Activity className="text-primary" size={28} />,
     items: [
       {
-        title: "Microscopic Brain Tumor Surgery",
-        desc: "Advanced surgical resection of gliomas, meningiomas, and pituitary tumors utilizing state-of-the-art neuro-navigation and awake craniotomy techniques to ensure maximal tumor removal with zero neurological deficits.",
-        recovery: "4-6 Weeks",
-        hospitalDelay: "3-5 Days",
-        focus: "Complete resection with functional preservation."
-      },
-      {
-        title: "Cerebral Aneurysm Clipping",
-        desc: "Emergency and elective microsurgical clipping of brain aneurysms to prevent catastrophic hemorrhages, performed with intraoperative indocyanine green (ICG) angiography.",
-        recovery: "6-8 Weeks",
-        hospitalDelay: "5-7 Days",
-        focus: "Vascular securing and stroke prevention."
-      }
-    ]
-  },
-  {
-    category: "Advanced Spine Surgery",
-    id: "spine-surgery",
-    icon: <Activity className="text-secondary" size={28} />,
-    items: [
-      {
-        title: "Minimally Invasive Spine Surgery (MISS)",
-        desc: "Keyhole surgery for herniated discs and spinal stenosis. Patients experience significantly less blood loss, negligible muscle damage, and can often walk within 24 hours of the operation.",
-        recovery: "2-4 Weeks",
-        hospitalDelay: "1-2 Days",
-        focus: "Rapid mobility and pain relief."
-      },
-      {
-        title: "Spinal Fusion & Deformity Correction",
-        desc: "Complex reconstructive surgeries using pedicle screws and rods to correct scoliosis, kyphosis, and severe spinal trauma.",
-        recovery: "8-12 Weeks",
-        hospitalDelay: "4-6 Days",
-        focus: "Structural stability and nerve decompression."
-      }
-    ]
-  },
-  {
-    category: "Vascular & Emergency Neurology",
-    id: "vascular-emergency",
-    icon: <ShieldAlert className="text-accent" size={28} />,
-    items: [
-      {
-        title: "Acute Stroke Intervention",
-        desc: "Rapid response medical and surgical management for ischemic and hemorrhagic strokes, including decompressive craniectomy for massive brain swelling.",
-        recovery: "Varies (Long Term)",
-        hospitalDelay: "7-14 Days",
-        focus: "Brain tissue salvage."
-      },
-      {
-        title: "Traumatic Brain Injury (TBI)",
-        desc: "Round-the-clock emergency surgical care for epidural, subdural hematomas, and skull fractures resulting from severe accidents.",
-        recovery: "Varies",
-        hospitalDelay: "7+ Days",
-        focus: "Intracranial pressure management."
-      }
-    ]
-  },
-  {
-    category: "Functional Neurology",
-    id: "functional-neurology",
-    icon: <ZapIcon className="text-blue-500" size={28} />,
-    items: [
-      {
-        title: "Epilepsy Surgery",
-        desc: "Lesionectomy and temporal lobectomy for patients suffering from medically refractory (drug-resistant) epilepsy.",
-        recovery: "4-6 Weeks",
-        hospitalDelay: "3-5 Days",
-        focus: "Seizure freedom."
-      },
-      {
-        title: "Peripheral Nerve Surgery",
-        desc: "Microsurgical decompression for Carpal Tunnel Syndrome and complex nerve repairs following severe trauma.",
-        recovery: "2-4 Weeks",
+        title: "Wisdom Tooth Extraction",
+        desc: "Painless surgical removal of impacted wisdom teeth using advanced local anesthesia and minimally invasive techniques to prevent infection and crowding.",
+        recovery: "3-5 Days",
         hospitalDelay: "Outpatient",
-        focus: "Nerve regeneration and pain cessation."
+        focus: "Pain relief and infection prevention."
+      },
+      {
+        title: "Corrective Jaw Surgery",
+        desc: "Surgical correction of misaligned jaws to improve speech, chewing, and facial aesthetics, performed with high-precision digital planning.",
+        recovery: "4-6 Weeks",
+        hospitalDelay: "1-2 Days",
+        focus: "Functional and aesthetic alignment."
+      }
+    ]
+  },
+  {
+    category: "Dental Implants & Prosthodontics",
+    id: "implant",
+    icon: <Microscope className="text-secondary" size={28} />,
+    items: [
+      {
+        title: "Single & Multiple Implants",
+        desc: "Permanent tooth replacement using biocompatible titanium posts that fuse with the bone, providing a foundation for natural-looking crowns.",
+        recovery: "3-6 Months (Healing)",
+        hospitalDelay: "Outpatient",
+        focus: "Restoring bite function and smile."
+      },
+      {
+        title: "Full Arched Rehabilitation",
+        desc: "Comprehensive restoration of an entire arch of teeth using All-on-4 or All-on-6 implant bridges for total oral reconstruction.",
+        recovery: "6-8 Months",
+        hospitalDelay: "Outpatient",
+        focus: "Total oral functional restoration."
+      }
+    ]
+  },
+  {
+    category: "Orthodontics & Kids Dentistry",
+    id: "orthodontics",
+    icon: <ShieldCheck className="text-accent" size={28} />,
+    items: [
+      {
+        title: "Fixed Braces & Clear Aligners",
+        desc: "Custom-made orthodontic solutions to straighten teeth, correct overbites, and close gaps using both traditional metal braces and modern invisible aligners.",
+        recovery: "12-24 Months",
+        hospitalDelay: "Monthly Visits",
+        focus: "Proper alignment and bite correction."
+      },
+      {
+        title: "Pediatric Preventive Care",
+        desc: "Gentle dental care for children, focusing on fluoride treatments, pit and fissure sealants, and early detection of growth issues.",
+        recovery: "Immediate",
+        hospitalDelay: "Outpatient",
+        focus: "Childhood oral hygiene and prevention."
+      }
+    ]
+  },
+  {
+    category: "Aesthetic & Conservative Dentistry",
+    id: "aesthetic",
+    icon: <Sparkles className="text-primary" size={28} />,
+    items: [
+      {
+        title: "Root Canal Treatment (Endodontics)",
+        desc: "Specialized procedure to save infected teeth by removing damaged pulp, cleaning the canals, and sealing them to prevent further infection.",
+        recovery: "1-2 Days",
+        hospitalDelay: "1-2 Sittings",
+        focus: "Saving the natural tooth."
+      },
+      {
+        title: "Smile Makeovers & Veneers",
+        desc: "Custom porcelain or composite veneers to correct tooth shape, color, and minor misalignments for a perfect, confident smile.",
+        recovery: "1 Week",
+        hospitalDelay: "2 Sittings",
+        focus: "Enhanced facial aesthetics."
       }
     ]
   }
@@ -102,13 +102,13 @@ export default function ServicesPage() {
         {/* Header */}
         <div className="space-y-4 max-w-4xl">
           <div className="inline-block bg-primary/10 text-primary px-3 md:px-4 py-1.5 md:py-2 rounded-full text-[10px] md:text-sm font-bold tracking-widest uppercase border border-primary/20">
-            Surgical Offerings
+            Dental Offerings
           </div>
           <h1 className="text-2xl md:text-5xl font-bold tracking-tight text-slate-900 leading-[1.2] md:leading-[1.1]">
             Specialized <span className="text-primary italic">Treatments</span>
           </h1>
           <p className="text-base md:text-xl text-slate-600 leading-relaxed">
-            A deeply detailed catalog of surgical methodologies and medical interventions performed with world-class precision at Sevron Hospital and Epic Health Care.
+            A detailed catalog of dental procedures and surgical interventions performed with expert precision by Dr. Abdullah Al Masum.
           </p>
         </div>
 

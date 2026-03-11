@@ -30,7 +30,7 @@ export default function TermsPage() {
               <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-2xl">
                 <p className="text-red-900 font-bold mb-2 uppercase text-xs tracking-widest">Crucial Information</p>
                 <p className="text-red-800 text-sm leading-relaxed">
-                  The content on this website is for informational purposes only and does not constitute medical advice, diagnosis, or treatment. NeuroCare Surgery and Dr. Neurologist are not liable for any actions taken based on website content without a personal clinical consultation.
+                  The content on this website is for informational purposes only and does not constitute medical/dental advice, diagnosis, or treatment. Masum's Dental Clinic and Dr. Abdullah Al Masum are not liable for any actions taken based on website content without a personal clinical consultation.
                 </p>
               </div>
             </section>
@@ -72,7 +72,7 @@ export default function TermsPage() {
                 <AlertCircle className="text-primary" size={24} /> 4. Limitation of Liability
               </h2>
               <p className="text-slate-600 leading-relaxed">
-                NeuroCare Surgery shall not be held liable for any indirect, incidental, or consequential damages resulting from the use or inability to use our website or online reservation services.
+                Masum's Dental Clinic shall not be held liable for any indirect, incidental, or consequential damages resulting from the use or inability to use our website or online reservation services.
               </p>
             </section>
 

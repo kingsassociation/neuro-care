@@ -19,8 +19,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "NeuroCare | Best Neurologist in Chattogram",
-  description: "Best Neurologist in Chattogram. Expert care for neurological conditions.",
+  title: "Masum's Dental Clinic | An Exclusive Dental Solution",
+  description: "Comprehensive dental care by Dr. Abdullah Al Masum. Expert in Oral Surgery, Dental Implants, and Aesthetic Dentistry in Chattogram.",
 };
 
 export default function RootLayout({

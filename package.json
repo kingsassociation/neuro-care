@@ -1,5 +1,5 @@
 {
-  "name": "neurocare-app",
+  "name": "masums-dental-clinic-app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -8,6 +8,9 @@
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate"
+  },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",

@@ -5,16 +5,16 @@ export async function GET() {
     try {
         const chambers = [
             {
-                name: "Sevron Hospital",
-                type: "Primary",
-                address: "Panchlaish Residential Area, Chattogram",
-                phone: "+880 1812-345678"
+                name: "Masum's Dental Clinic",
+                type: "Main",
+                address: "Gafur Mansion, 1107/A Love Lane, Chattogram",
+                phone: "01712-260461"
             },
             {
-                name: "Epic Health Care",
+                name: "Epic Health Care (Dental)",
                 type: "Visiting",
                 address: "O.R. Nizam Road, Chattogram",
-                phone: "+880 1812-987654"
+                phone: "01712-260461"
             }
         ];
 
@@ -25,7 +25,7 @@ export async function GET() {
         }
 
         // 2. Create Admin if not exists
-        const adminEmail = "admin@neurocare.com";
+        const adminEmail = "info@masumsdental.com";
         const existingAdmin = await prisma.admin.findUnique({
             where: { email: adminEmail }
         });

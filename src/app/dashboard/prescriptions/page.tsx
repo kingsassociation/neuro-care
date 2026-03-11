@@ -91,7 +91,7 @@ export default function PrescriptionsPage() {
                 <tr key={p.id} className="hover:bg-slate-50/50 transition-colors group">
                   <td className="px-6 py-5">
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center font-bold shrink-0">
+                      <div className="w-10 h-10 bg-primary/5 text-primary rounded-full flex items-center justify-center font-bold shrink-0">
                         {p.patient.name.charAt(0)}
                       </div>
                       <div>
@@ -130,7 +130,7 @@ export default function PrescriptionsPage() {
                     <div className="flex justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
                       <Link 
                         href={`/dashboard/prescriptions/new?patientId=${p.patientId}&prescriptionId=${p.id}`}
-                        className="p-2 bg-blue-50 text-blue-600 rounded-lg hover:bg-blue-100 transition"
+                        className="p-2 bg-primary/5 text-primary rounded-lg hover:bg-primary/10 transition"
                         title="Edit Prescription"
                       >
                         <Eye size={18} />

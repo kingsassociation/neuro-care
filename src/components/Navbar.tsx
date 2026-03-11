@@ -1,7 +1,8 @@
 "use client";
 
-import { Calendar, Menu, Stethoscope, X } from "lucide-react";
+import { Calendar, Menu, X } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const Navbar = () => {
@@ -35,11 +36,11 @@ const Navbar = () => {
       <nav className="glass w-full max-w-7xl rounded-2xl px-6 py-4 flex items-center justify-between transition-all duration-300">
         {/* Logo */}
         <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="bg-primary p-2 rounded-xl text-white group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
-            <Stethoscope size={24} />
+          <div className="w-10 h-10 relative group-hover:scale-105 transition-transform">
+            <Image src="/logo.png" alt="Logo" fill className="object-contain" />
           </div>
-          <span className="text-2xl font-bold tracking-tight text-foreground">
-            Neuro<span className="text-primary">Care</span>
+          <span className="text-xl md:text-2xl font-black tracking-tighter text-foreground uppercase">
+            Masum's <span className="text-primary italic">Dental</span> Clinic
           </span>
         </div>
 

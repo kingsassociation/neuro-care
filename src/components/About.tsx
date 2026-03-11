@@ -8,22 +8,22 @@ const milestones = [
   {
     icon: <GraduationCap size={24} />,
     title: "Education",
-    desc: "MBBS, FCPS (Neurosurgery) from Chattogram Medical College."
+    desc: "BDS (DU), PGT (Oral Surgery), Certified Training in Orthodontics."
   },
   {
     icon: <Award size={24} />,
-    title: "Current Role",
-    desc: "Senior Consultant at Chattogram Medical College Hospital."
+    title: "Expertise",
+    desc: "Oral Surgery, Dental Implant, Aesthetic Dentistry, Endodontics (India)."
   },
   {
     icon: <Globe size={24} />,
-    title: "Global Training",
-    desc: "Fellowship in Minimally Invasive Spine Surgery from UK."
+    title: "Registration",
+    desc: "BMDC Registration No: 2677. Registered Dental Practitioner."
   },
   {
     icon: <BookOpen size={24} />,
-    title: "Research & Media",
-    desc: "Extensive publications in international neurology journals."
+    title: "Experience",
+    desc: "Specialized in advanced dental solutions and surgical procedures."
   }
 ];
 
@@ -61,18 +61,18 @@ const About = () => {
         {/* Right Side - Storytelling */}
         <div className="w-full lg:w-1/2 space-y-5 md:space-y-6 pt-4 md:pt-0">
           <div className="space-y-2 md:space-y-4">
-            <h2 className="text-primary font-bold tracking-widest uppercase text-[10px] md:text-sm">Know Your Surgeon</h2>
+            <h2 className="text-primary font-bold tracking-widest uppercase text-[10px] md:text-sm">Know Your Dentist</h2>
             <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.2]">
-              A Journey Dedicated to Your <span className="text-gradient">Neurological Health</span>
+              A Journey Dedicated to Your <span className="text-gradient">Oral Health</span>
             </h3>
           </div>
 
           <div className="space-y-4 md:space-y-6 text-base md:text-lg lg:text-xl text-foreground/70 leading-relaxed">
             <p>
-              As a dedicated Neurosurgeon at Chattogram Medical College, my entire career has been focused on mastering the immense complexities of the human brain and spine. 
+              As a dedicated Dental Specialist, my entire career has been focused on providing advanced dental care and restoring beautiful smiles.
             </p>
             <p>
-              Thousands of successful surgeries later, my mission remains unchanged: to bring the world’s most advanced, minimally invasive surgical techniques directly to the people of Bangladesh with supreme care and zero compromise.
+              With specialized training in Oral Surgery and Orthodontics, I bring the latest dental technologies and techniques to provide painless, effective treatments for all ages.
             </p>
           </div>
 

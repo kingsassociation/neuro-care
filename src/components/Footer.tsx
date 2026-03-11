@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUp, Facebook, Linkedin, Stethoscope, Youtube } from "lucide-react";
+import { ArrowUp, Facebook, Linkedin, Smile, Youtube } from "lucide-react";
 import Link from "next/link";
 import XIcon from "./icons/XIcon";
 
@@ -20,14 +20,14 @@ const Footer = () => {
           <div className="space-y-4 md:space-y-6">
             <div className="flex items-center gap-2 group cursor-pointer">
               <div className="bg-primary p-2 rounded-xl text-white group-hover:rotate-12 transition-transform shadow-lg shadow-primary/20">
-                <Stethoscope size={24} />
+                <Smile size={24} />
               </div>
-              <span className="text-2xl font-bold tracking-tight text-slate-900">
-                Neuro<span className="text-primary">Care</span>
+              <span className="text-xl md:text-2xl font-black tracking-tight text-slate-900 uppercase">
+                Masum's <span className="text-primary italic">Dental</span> Clinic
               </span>
             </div>
             <p className="text-slate-500 text-sm md:text-base leading-relaxed">
-              Delivering world-class neurosurgical and brain care with unparalleled precision. Your trusted destination for complex neurological treatments.
+              An Exclusive Dental Solution for your family. Delivering world-class dental care and surgery with precision and care.
             </p>
             <div className="flex items-center gap-3">
               {[Facebook, Youtube, Linkedin, XIcon].map((Icon, i) => (
@@ -61,14 +61,14 @@ const Footer = () => {
 
           {/* Services */}
           <div className="space-y-4 md:space-y-6">
-            <h4 className="text-base md:text-lg font-bold text-slate-900 uppercase tracking-wider">Medical Services</h4>
+            <h4 className="text-base md:text-lg font-bold text-slate-900 uppercase tracking-wider">Dental Services</h4>
             <ul className="space-y-3 md:space-y-4 text-slate-500 text-sm font-medium">
               {[
-                { name: "Specialized Services", path: "/services" },
-                { name: "Neurosurgery & Oncology", path: "/services/#neurosurgery-oncology" },
-                { name: "Advanced Spine Surgery", path: "/services/#spine-surgery" },
-                { name: "Vascular & Emergency Neurology", path: "/services/#vascular-emergency" },
-                { name: "Functional Neurology", path: "/services/#functional-neurology" }
+                { name: "Oral Surgery", path: "/services/#oral-surgery" },
+                { name: "Dental Implant", path: "/services/#implant" },
+                { name: "Aesthetic Dentistry", path: "/services/#aesthetic" },
+                { name: "Endodontics", path: "/services/#endodontics" },
+                { name: "Orthodontics", path: "/services/#orthodontics" }
               ].map((item) => (
                 <li key={item.name}>
                   <Link href={item.path} className="hover:text-primary transition-colors">{item.name}</Link>
@@ -82,9 +82,9 @@ const Footer = () => {
             <h4 className="text-base md:text-lg font-bold text-slate-900 uppercase tracking-wider">Newsletter</h4>
             <p className="text-slate-500 text-sm">Subscribe to get latest health tips and news directly.</p>
             <div className="flex gap-2">
-              <input 
-                type="email" 
-                placeholder="Your email" 
+              <input
+                type="email"
+                placeholder="Your email"
                 className="bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 flex-grow focus:outline-none focus:ring-1 focus:ring-primary transition-all text-slate-900 text-sm placeholder:text-slate-400"
               />
               <button className="bg-primary p-3 rounded-xl hover:bg-primary/90 transition-all text-white">
@@ -95,8 +95,8 @@ const Footer = () => {
         </div>
 
         <div className="pt-8 md:pt-12 border-t border-slate-100 flex flex-col items-center gap-4 text-xs text-slate-400 font-medium text-center">
-          <p className="leading-relaxed px-4">© 2026 NeuroCare Surgery. All rights reserved. Develop by <a href="https://www.felconis.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">FELCONIS(www.felconis.com)</a></p>
-          <button 
+          <p className="leading-relaxed px-4">© 2026 Masum's Dental Clinic. All rights reserved. Develop by <a href="https://www.felconis.com" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">FELCONIS</a></p>
+          <button
             onClick={scrollToTop}
             className="group flex items-center gap-2 text-slate-500 hover:text-slate-900 transition-colors"
           >

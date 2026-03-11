@@ -38,16 +38,16 @@ const PrescriptionPrintView = forwardRef<HTMLDivElement, Props>(({ data }, ref) 
         w-[210mm] min-h-[297mm] 
         print:w-[210mm] print:h-[297mm] print:m-0 print:p-8 print:box-border print:overflow-hidden break-inside-avoid !max-w-none border shadow-sm print:border-none print:shadow-none">
         {/* Header */}
-      <div className="border-b-2 border-blue-900 pb-4 mb-6 flex justify-between items-end">
-        <div>
-          <h1 className="text-3xl font-bold text-blue-900">Dr. John Doe</h1>
-          <p className="text-gray-600 font-semibold">MBBS, MD (Neurology)</p>
-          <p className="text-sm text-gray-500">Sr. Consultant Neurologist</p>
-        </div>
+        <div className="border-b-2 border-primary pb-4 mb-6 flex justify-between items-end">
+          <div>
+            <h1 className="text-3xl font-bold text-primary">Dr. Abdullah Al Masum</h1>
+            <p className="text-gray-600 font-semibold text-sm">BDS (DU), PGT (Oral Surgery), Orthodontics & Dental Implants</p>
+            <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">BMDC Reg No: 2677 | Dental Surgeon</p>
+          </div>
         <div className="text-right text-sm">
-          <p><strong>{data.chamber?.name || "Select a Chamber"}</strong></p>
-          <p>{data.chamber?.address || "123 Health Avenue, Medical District"}</p>
-          <p>Phone: {data.chamber?.phone || "+1 234 567 890"}</p>
+          <p><strong>{data.chamber?.name || "Masum's Dental Clinic"}</strong></p>
+          <p>{data.chamber?.address || "Gafur Mansion, 1107/A Love Lane, Chattogram"}</p>
+          <p>Phone: {data.chamber?.phone || "01712-260461"}</p>
         </div>
       </div>
 
@@ -88,9 +88,8 @@ const PrescriptionPrintView = forwardRef<HTMLDivElement, Props>(({ data }, ref) 
           )}
         </div>
 
-        {/* Right Column (Rx) */}
         <div className="col-span-2 pl-2">
-          <h2 className="text-4xl text-blue-900 font-serif mb-6">Rx</h2>
+          <h2 className="text-4xl text-primary font-serif mb-6">Rx</h2>
           
           <div className="space-y-6">
             {data.medications?.map((med, index) => (
@@ -118,7 +117,7 @@ const PrescriptionPrintView = forwardRef<HTMLDivElement, Props>(({ data }, ref) 
       <div className="mt-auto pt-4 border-t flex justify-between items-end break-inside-avoid">
         <div>
           {data.nextVisit && (
-            <p className="font-semibold text-blue-900">Next Visit: {new Date(data.nextVisit).toLocaleDateString()}</p>
+            <p className="font-semibold text-primary">Next Visit: {new Date(data.nextVisit).toLocaleDateString()}</p>
           )}
         </div>
         <div className="text-center">

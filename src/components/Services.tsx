@@ -1,32 +1,32 @@
 "use client";
 
-import { Activity, ArrowUpRight, Brain, ShieldAlert, ZapIcon } from "lucide-react";
+import { Activity, ArrowUpRight, Microscope, ShieldAlert, Sparkles } from "lucide-react";
 import Link from "next/link";
 
 const services = [
   {
-    title: "Brain Tumor Surgery",
-    desc: "Advanced neuro-oncology techniques for the safe and precise removal of complex tumors with minimal neurological impact.",
-    icon: <Brain className="text-primary" size={32} />,
+    title: "Oral Surgery",
+    desc: "Expert surgical procedures including tooth extractions, wisdom tooth removal, and corrective jaw surgery.",
+    icon: <Activity className="text-primary" size={32} />,
     color: "bg-primary/10",
   },
   {
-    title: "Spine & Disc Surgery",
-    desc: "Minimally invasive operations for herniated discs, spinal stenosis, and complex spinal deformities to restore mobility.",
-    icon: <Activity className="text-secondary" size={32} />,
+    title: "Dental Implant",
+    desc: "Permanent and natural-looking tooth replacement solutions using state-of-the-art implant technology.",
+    icon: <Microscope className="text-secondary" size={32} />,
     color: "bg-secondary/10",
   },
   {
-    title: "Stroke Management",
-    desc: "Critical emergency interventions and long-term vascular rehabilitation protocols to survive and beat stroke.",
-    icon: <ShieldAlert className="text-accent" size={32} />,
+    title: "Aesthetic Dentistry",
+    desc: "Smile makeovers, teeth whitening, and veneers to enhance the beauty and confidence of your smile.",
+    icon: <Sparkles className="text-accent" size={32} />,
     color: "bg-accent/10",
   },
   {
-    title: "Epilepsy Treatment",
-    desc: "Expert diagnosis and surgical/medical management of severe seizure disorders for a vastly improved quality of life.",
-    icon: <ZapIcon className="text-blue-500" size={32} />,
-    color: "bg-blue-500/10",
+    title: "Orthodontics",
+    desc: "Braces and aligners to correct teeth alignment and improve oral function and aesthetics for all ages.",
+    icon: <ShieldAlert className="text-primary" size={32} />,
+    color: "bg-primary/10",
   }
 ];
 
@@ -38,10 +38,10 @@ const Services = () => {
         <div className="text-center space-y-2 md:space-y-4 max-w-2xl mx-auto">
           <h2 className="text-primary font-bold tracking-widest uppercase text-[10px] md:text-sm">Our Specialties</h2>
           <h3 className="text-2xl sm:text-3xl lg:text-5xl font-bold tracking-tight text-foreground leading-[1.2]">
-            Precision Neurosurgical & Brain Care
+            Comprehensive Dental Care & Oral Surgery
           </h3>
           <p className="text-sm md:text-base text-foreground/60 leading-relaxed px-4 md:px-0">
-            Delivering the highest standard of neurological and spinal procedures using state-of-the-art microsurgical techniques in Chattogram.
+            Delivering the highest standard of dental procedures using state-of-the-art technology and pain-free techniques in Chattogram.
           </p>
         </div>
 

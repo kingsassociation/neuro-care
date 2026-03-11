@@ -62,10 +62,10 @@ export default function SettingsPage() {
 
       <div className="bg-white p-8 rounded-3xl border border-slate-200 shadow-sm relative overflow-hidden">
         {/* Decorative background element */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-blue-50/50 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-20 -mt-20 pointer-events-none" />
 
         <div className="flex items-center gap-4 mb-8 relative z-10">
-          <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-2xl flex items-center justify-center shadow-inner">
+          <div className="w-12 h-12 bg-primary/10 text-primary rounded-2xl flex items-center justify-center shadow-inner">
             <ShieldCheck size={24} />
           </div>
           <div>
@@ -79,14 +79,14 @@ export default function SettingsPage() {
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-2">Current Password</label>
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">
                   <Lock size={18} />
                 </div>
                 <input
                   type="password"
                   value={oldPassword}
                   onChange={(e) => setOldPassword(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-slate-900"
                   required
                 />
               </div>
@@ -95,14 +95,14 @@ export default function SettingsPage() {
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-2">New Password</label>
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">
                   <Lock size={18} />
                 </div>
                 <input
                   type="password"
                   value={newPassword}
                   onChange={(e) => setNewPassword(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-slate-900"
                   required
                 />
               </div>
@@ -111,14 +111,14 @@ export default function SettingsPage() {
             <div>
               <label className="block text-sm font-semibold text-slate-700 mb-2">Confirm New Password</label>
               <div className="relative group">
-                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-blue-600 transition-colors">
+                <div className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 group-focus-within:text-primary transition-colors">
                   <Lock size={18} />
                 </div>
                 <input
                   type="password"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all text-slate-900"
+                  className="w-full bg-slate-50 border border-slate-200 rounded-2xl py-3 pl-12 pr-4 outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all text-slate-900"
                   required
                 />
               </div>
@@ -142,7 +142,7 @@ export default function SettingsPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full md:w-auto px-8 bg-blue-600 text-white font-bold py-3.5 rounded-2xl hover:bg-blue-700 active:scale-95 transition-all shadow-lg shadow-blue-600/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+            className="w-full md:w-auto px-8 bg-primary text-white font-bold py-3.5 rounded-2xl hover:bg-primary/90 active:scale-95 transition-all shadow-lg shadow-primary/20 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
           >
             {loading ? (
               <>
